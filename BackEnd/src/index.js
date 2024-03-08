@@ -28,7 +28,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
@@ -40,7 +40,7 @@ mongoose
     console.log("Connect Db success!");
   })
   .catch((err) => {
-    console.log(err);
+    console.log("Error connecting to the database:", err);
   });
 app.listen(port, () => {
   console.log("Server is running in port: ", +port);

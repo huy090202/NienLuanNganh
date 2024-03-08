@@ -1,4 +1,5 @@
 const User = require("../models/UserModel");
+const Role = require("../models/RoleModel");
 const bcrypt = require("bcrypt");
 const { genneralAccessToken, genneralRefreshToken } = require("./JwtService");
 
@@ -203,6 +204,27 @@ const getDetailsUser = (id) => {
   });
 };
 
+const roleUser = (typeInput) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!typeInput) {
+        resolve({
+          status: "ERR",
+          message: "The role is required",
+        });
+      }
+      const dataRole = await Role.find({ roleName: typeInput });
+      resolve({
+        status: "OK",
+        message: "SUCCESS",
+        data: dataRole,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   createUser,
   loginUser,
@@ -211,4 +233,5 @@ module.exports = {
   getAllUser,
   getDetailsUser,
   deleteManyUser,
+  roleUser,
 };

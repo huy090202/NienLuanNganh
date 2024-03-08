@@ -9,6 +9,7 @@ const {
 router.post("/sign-up", userController.createUser);
 router.post("/sign-in", userController.loginUser);
 router.post("/log-out", userController.logoutUser);
+router.get("/role", userController.roleUser);
 router.put(
   "/update-user",
   // authUserMiddleWare,

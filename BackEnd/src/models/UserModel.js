@@ -7,9 +7,14 @@ const userSchema = new mongoose.Schema(
     phone: { type: Number },
     address: { type: String },
     avatar: { type: String },
+    gender: { type: String },
     city: { type: String },
-    isSeller: { type: Boolean, default: false, required: true },
-    isAdmin: { type: Boolean, default: false, required: true },
+    roleId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role",
+    },
+    // isSeller: { type: Boolean, default: false, required: true },
+    // isAdmin: { type: Boolean, default: false, required: true },
   },
   {
     timestamps: true,

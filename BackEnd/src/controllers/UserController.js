@@ -199,6 +199,20 @@ const logoutUser = async (req, res) => {
     });
   }
 };
+
+const roleUser = async (req, res) => {
+  try {
+    let data = await UserService.roleUser(req.query.roleName);
+    console.log("The role user is: ", data);
+    return res.status(200).json(data);
+  } catch (e) {
+    console.log("The role user is error: ", e);
+    return res.status(404).json({
+      message: "Error from server",
+    });
+  }
+};
+
 module.exports = {
   createUser,
   loginUser,
@@ -209,4 +223,5 @@ module.exports = {
   refreshToken,
   logoutUser,
   deleteMany,
+  roleUser,
 };
