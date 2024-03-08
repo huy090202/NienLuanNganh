@@ -1,45 +1,81 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./Catalog.scss";
 
 import Slider from "react-slick";
-// Import css files
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 class Catalog extends Component {
   render() {
-    let setting = {
-      dots: false,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-    };
-
     return (
-      <div className="section-catalog">
-        <div className="catalog-content">
-          <Slider {...setting}>
-            <div className="img-customize">
-              <h3>1</h3>
-            </div>
-            <div className="img-customize">
-              <h3>2</h3>
-            </div>
-            <div className="img-customize">
-              <h3>3</h3>
-            </div>
-            <div className="img-customize">
-              <h3>4</h3>
-            </div>
-            <div className="img-customize">
-              <h3>5</h3>
-            </div>
-            <div className="img-customize">
-              <h3>6</h3>
-            </div>
-          </Slider>
+      <div className="section-share section-catalog">
+        <div className="section-container">
+          <div className="section-header">
+            <span className="title-section">Danh mục</span>
+            <button className="btn-section">Xem thêm</button>
+          </div>
+          <div className="section-body">
+            <Slider {...this.props.settings1}>
+              <div className="img-customize">
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 1</div>
+                </div>
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 7</div>
+                </div>
+              </div>
+              <div className="img-customize">
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 2</div>
+                </div>
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 8</div>
+                </div>
+              </div>
+              <div className="img-customize">
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 3</div>
+                </div>
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 9</div>
+                </div>
+              </div>
+              <div className="img-customize">
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 4</div>
+                </div>
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 10</div>
+                </div>
+              </div>
+              <div className="img-customize">
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 5</div>
+                </div>
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 11</div>
+                </div>
+              </div>
+              <div className="img-customize">
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 6</div>
+                </div>
+                <div className="catalog-img">
+                  <div className="img-son" />
+                  <div className="img-title">Mục 12</div>
+                </div>
+              </div>
+            </Slider>
+          </div>
         </div>
       </div>
     );

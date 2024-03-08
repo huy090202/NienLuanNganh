@@ -1,0 +1,284 @@
+// override slick slider library
+.slick-prev {
+  left: -12px !important;
+  z-index: 1000 !important;
+  width: 44px !important;
+  height: 48px !important;
+  background: white !important;
+  border: 1px solid #d7d7d7 !important;
+
+  &:hover {
+    background: #dedede !important;
+  }
+}
+
+.slick-prev::before,
+.slick-next::before {
+  color: #fba243 !important;
+  font-family: "Font Awesome 5 Free" !important;
+}
+
+.slick-next {
+  right: -12px !important;
+  width: 44px !important;
+  height: 48px !important;
+  background: white !important;
+  border: 1px solid #d7d7d7 !important;
+
+  &:hover {
+    background: #dedede !important;
+  }
+}
+
+.section-share {
+  margin: 30px 0;
+
+  &.section-catalog {
+    background: white;
+  }
+
+  &.section-selling-products {
+    height: 411px;
+  }
+
+  &.section-suggestion {
+    height: 411px;
+  }
+
+  &.section-banner {
+    height: 300px;
+  }
+
+  .section-body {
+    .img-customize {
+      .catalog-img {
+        display: flex;
+        padding: 5px 0;
+        margin: 0 10px;
+        border-radius: 5px;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        border: 1px solid #efefef;
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0 0 10px 0 #efefef;
+        }
+
+        .img-son {
+          width: 100px;
+          height: 100px;
+          background-image: url("../../assets/Catalog/ThoiTrangNam.png");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+        .img-son-products {
+          width: 250px;
+          height: 250px;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+
+          &.selling-img {
+            background-image: url("../../assets/SellingProducts/test2.png");
+          }
+
+          &.suggestion-img {
+            background-image: url("../../assets/Suggestion/test1.png");
+          }
+        }
+
+        .img-title {
+          width: 80%;
+          padding: 10px 0;
+          font-size: 16px;
+
+          .img-name {
+            text-align: center;
+          }
+
+          .img-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+
+            span {
+              &:first-child {
+                color: #fba243;
+                font-size: 18px;
+                font-weight: 600;
+              }
+
+              &:last-child {
+                color: #ccc;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.section-share {
+  height: 363px;
+
+  .section-container {
+    margin: 0 100px;
+    display: flex;
+    flex-direction: column;
+
+    .section-header {
+      height: 60px;
+      padding: 10px 20px;
+
+      .title-section {
+        color: #fba243;
+        font-size: 22px;
+        font-weight: 600;
+        text-transform: uppercase;
+        cursor: context-menu;
+      }
+
+      .btn-section {
+        float: right;
+        cursor: pointer;
+        font-size: 14px;
+        color: #fba243;
+        font-weight: 600;
+        border-radius: 5px;
+        padding: 10px 15px;
+        background: #efefef;
+        border: none;
+        text-transform: uppercase;
+
+        &:hover {
+          color: white;
+          background: #fba243;
+        }
+      }
+    }
+  }
+}
+
+.section-banner-header {
+  display: flex;
+  gap: 30px;
+  margin: 0 110px;
+  align-items: center;
+  justify-content: center;
+
+  .section-banner-content {
+    width: 100%;
+    padding-bottom: 30px;
+
+    @keyframes shake {
+      0% {
+        transform: translate(1px, 1px) rotate(0deg);
+      }
+      10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+      }
+      20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+      }
+      30% {
+        transform: translate(3px, 2px) rotate(0deg);
+      }
+      40% {
+        transform: translate(1px, -1px) rotate(1deg);
+      }
+      50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+      }
+      60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+      }
+      70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+      }
+      80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+      }
+      90% {
+        transform: translate(1px, 2px) rotate(0deg);
+      }
+      100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+      }
+    }
+
+    .banner-img-left {
+      width: 100%;
+      height: 300px;
+      background-image: url("../../assets/Banner/BannerLeft.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: transform 0.5s ease;
+
+      &:hover {
+        animation: shake 0.5s;
+        animation-iteration-count: infinite;
+      }
+    }
+
+    .banner-img-right {
+      width: 100%;
+      height: 300px;
+      background-image: url("../../assets/Banner/BannerRight.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      &:hover {
+        animation: shake 0.5s;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
+}
+
+.home-footer {
+  display: flex;
+  padding: 10px 0;
+  margin: 0 110px;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    font-size: 18px;
+    margin-bottom: 0;
+    color: #fba243;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .footer-contact {
+    gap: 20px;
+    display: flex;
+
+    .footer-icon {
+      font-size: 30px;
+
+      .fa-facebook {
+        color: blue;
+      }
+
+      .fa-square-instagram {
+        color: #ea084c;
+      }
+
+      .fa-twitter {
+        color: #1da1f2;
+      }
+    }
+  }
+}
