@@ -14,7 +14,8 @@ class Header extends Component {
   };
 
   render() {
-    const { processLogout, language } = this.props;
+    const { processLogout, language, userInfo } = this.props;
+    console.log("Check userInfo: ", userInfo);
 
     return (
       <div className="header-container">
@@ -24,6 +25,10 @@ class Header extends Component {
         </div>
 
         <div className="languages">
+          <span className="welcome">
+            <FormattedMessage id="homeheader.welcome" />,{" "}
+            {userInfo && userInfo.name ? userInfo.name : userInfo.email}!
+          </span>
           <span
             className={
               language === LANGUAGES.VI ? "language-vi active" : "language-vi"
@@ -57,6 +62,7 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
+    userInfo: state.user.userInfo,
     language: state.app.language,
   };
 };
