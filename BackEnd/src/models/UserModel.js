@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema(
     roleId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Role",
+      default: "65eac69a689883acb1f43c5a",
     },
     // isSeller: { type: Boolean, default: false, required: true },
     // isAdmin: { type: Boolean, default: false, required: true },

@@ -5,8 +5,16 @@ const { genneralAccessToken, genneralRefreshToken } = require("./JwtService");
 
 const createUser = (newUser) => {
   return new Promise(async (resolve, reject) => {
-    const { name, email, password, confirmPassword, phone, address, city } =
-      newUser;
+    const {
+      name,
+      email,
+      password,
+      confirmPassword,
+      phone,
+      address,
+      city,
+      gender,
+    } = newUser;
     try {
       const checkUser = await User.findOne({
         email: email,
@@ -17,6 +25,20 @@ const createUser = (newUser) => {
           message: "The email is already",
         });
       }
+
+      const customerRole = await Role.findOne({
+        roleValueEn: "Customer",
+        roleValueVi: "Khách hàng",
+      });
+
+      if (!customerRole) {
+        resolve({
+          status: "ERR",
+          message: "Default role 'Customer' not found",
+        });
+        return;
+      }
+
       const hash = bcrypt.hashSync(password, 10);
       const createdUser = await User.create({
         name,
@@ -25,6 +47,8 @@ const createUser = (newUser) => {
         phone,
         address,
         city,
+        gender,
+        roleId: customerRole._id,
       });
       if (createdUser) {
         resolve({

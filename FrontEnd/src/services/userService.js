@@ -25,10 +25,15 @@ const editUserService = (data) => {
   return axios.put("/api/user/update-user", data);
 };
 
+const getRoleService = (inputRoleName) => {
+  return axios.get(`/api/user/role?roleName=${inputRoleName}`);
+};
+
 export {
   handleLoginApi,
   getAllUsers,
   createNewUserService,
   deleteUserService,
   editUserService,
+  getRoleService,
 };

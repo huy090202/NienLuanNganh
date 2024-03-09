@@ -27,5 +27,18 @@
       "permission": "Permissions",
       "manage-permission": "Manage Permissions"
     }
+  },
+  "manage-user": {
+    "add": "Add a new user",
+    "email": "Email",
+    "name": "Name",
+    "password": "Password",
+    "confirm-password": "Confirm password",
+    "phone-number": "Phone number",
+    "address": "Address",
+    "gender": "Gender",
+    "role": "Role",
+    "avatar": "Avatar",
+    "save": "Save user"
   }
 }
