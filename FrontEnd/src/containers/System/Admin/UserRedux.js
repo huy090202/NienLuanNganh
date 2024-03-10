@@ -6,6 +6,7 @@ import * as actions from "../../../store/actions";
 import "./UserRedux.scss";
 
 import PreviewModal from "./PreviewAvatar";
+import TableManageUser from "./TableManageUser";
 
 class UserRedux extends Component {
   constructor(props) {
@@ -55,6 +56,21 @@ class UserRedux extends Component {
       this.setState({
         roleArr: arrRoles,
         roleId: arrRoles && arrRoles.length > 0 ? arrRoles[0].roleKey : "",
+      });
+    }
+
+    if (prevProps.listUsers !== this.props.listUsers) {
+      this.setState({
+        email: "",
+        name: "",
+        password: "",
+        confimpassword: "",
+        phone: "",
+        address: "",
+        city: "",
+        gender: "",
+        roleId: "",
+        avatar: "",
       });
     }
   }
@@ -131,6 +147,10 @@ class UserRedux extends Component {
       gender: this.state.gender,
       roleId: this.state.roleId,
     });
+
+    setTimeout(() => {
+      this.props.fetchUserRedux();
+    }, 1000);
   };
 
   render() {
@@ -154,7 +174,7 @@ class UserRedux extends Component {
 
     return (
       <div className="user-redux-container">
-        <div className="title">CRUD người dùng với redux</div>
+        <div className="title">Quản lý người dùng</div>
         <div className="user-redux-body">
           <div className="container">
             <div className="row">
@@ -309,13 +329,16 @@ class UserRedux extends Component {
                   ></div>
                 </div>
               </div>
-              <div className="col-12 mt-4">
+              <div className="col-12 my-4">
                 <button
                   className="btn btn-primary"
                   onClick={() => this.handleSaveUser()}
                 >
                   <FormattedMessage id="manage-user.save" />
                 </button>
+              </div>
+              <div className="col-12 mb-5">
+                <TableManageUser />
               </div>
             </div>
           </div>
@@ -338,6 +361,7 @@ const mapStateToProps = (state) => {
     genderRedux: state.admin.genders,
     roleRedux: state.admin.roles,
     isLoadingGender: state.admin.isLoadingGender,
+    listUsers: state.admin.users,
   };
 };
 
@@ -346,6 +370,8 @@ const mapDispatchToProps = (dispatch) => {
     getGenderStart: () => dispatch(actions.fetchGenderStart()),
     getRoleStart: () => dispatch(actions.fetchRoleStart()),
     createNewUser: (data) => dispatch(actions.createNewUser(data)),
+    fetchUserRedux: () => dispatch(actions.fetchAllUsersStart()),
+
     // processLogout: () => dispatch(actions.processLogout()),
     // changeLanguageAppRedux: (language) =>
     //   dispatch(actions.changeLanguageApp(language)),

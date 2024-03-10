@@ -9,9 +9,7 @@ const userSchema = new mongoose.Schema(
     avatar: { type: String },
     gender: { type: String },
     city: { type: String },
-    roleId: {
-      type: String,
-    },
+    roleId: { type: String },
     // isSeller: { type: Boolean, default: false, required: true },
     // isAdmin: { type: Boolean, default: false, required: true },
   },
