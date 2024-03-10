@@ -14,11 +14,13 @@ const createUser = (newUser) => {
       address,
       city,
       gender,
+      roleId,
     } = newUser;
     try {
       const checkUser = await User.findOne({
         email: email,
       });
+
       if (checkUser !== null) {
         resolve({
           status: "ERR",
@@ -26,17 +28,11 @@ const createUser = (newUser) => {
         });
       }
 
-      const customerRole = await Role.findOne({
-        roleValueEn: "Customer",
-        roleValueVi: "Khách hàng",
-      });
-
-      if (!customerRole) {
+      if (password !== confirmPassword) {
         resolve({
           status: "ERR",
-          message: "Default role 'Customer' not found",
+          message: "The password and confirmPassword is not match",
         });
-        return;
       }
 
       const hash = bcrypt.hashSync(password, 10);
@@ -48,8 +44,9 @@ const createUser = (newUser) => {
         address,
         city,
         gender,
-        roleId: customerRole._id,
+        roleId,
       });
+
       if (createdUser) {
         resolve({
           status: "OK",

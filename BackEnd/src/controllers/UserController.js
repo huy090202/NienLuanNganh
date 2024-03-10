@@ -3,7 +3,17 @@ const JwtService = require("../services/JwtService");
 
 const createUser = async (req, res) => {
   try {
-    const { name, email, password, confirmPassword, phone } = req.body;
+    const {
+      name,
+      email,
+      password,
+      confirmPassword,
+      phone,
+      address,
+      city,
+      gender,
+      roleId,
+    } = req.body;
     const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     const isCheckEmail = reg.test(email);
     if (!email || !password || !confirmPassword) {
@@ -203,10 +213,8 @@ const logoutUser = async (req, res) => {
 const roleUser = async (req, res) => {
   try {
     let data = await UserService.roleUser(req.query.roleName);
-    console.log("The role user is: ", data);
     return res.status(200).json(data);
   } catch (e) {
-    console.log("The role user is error: ", e);
     return res.status(404).json({
       message: "Error from server",
     });

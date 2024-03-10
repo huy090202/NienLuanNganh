@@ -36,6 +36,7 @@
     "confirm-password": "Confirm password",
     "phone-number": "Phone number",
     "address": "Address",
+    "city": "City",
     "gender": "Gender",
     "role": "Role",
     "avatar": "Avatar",
