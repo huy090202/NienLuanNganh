@@ -13,6 +13,7 @@ const createUser = async (req, res) => {
       city,
       gender,
       roleId,
+      avatar,
     } = req.body;
     const reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     const isCheckEmail = reg.test(email);

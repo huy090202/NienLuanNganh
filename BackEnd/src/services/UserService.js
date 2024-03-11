@@ -15,6 +15,7 @@ const createUser = (newUser) => {
       city,
       gender,
       roleId,
+      avatar,
     } = newUser;
     try {
       const checkUser = await User.findOne({
@@ -45,6 +46,7 @@ const createUser = (newUser) => {
         city,
         gender,
         roleId,
+        avatar,
       });
 
       if (createdUser) {
@@ -116,11 +118,25 @@ const updateUser = (id, data) => {
         useFindAndModify: false,
       });
 
-      if (!updatedUser || !data.roleId || !data.gender) {
+      if (!updatedUser) {
         resolve({
           status: "ERR",
           message: "The user is not defined",
         });
+      }
+
+      if (!data.roleId || !data.gender) {
+        resolve({
+          status: "ERR",
+          message: "roleId or gender is not defined",
+        });
+      }
+
+      // Check avatar
+      if (data.avatar) {
+        updatedUser.avatar = data.avatar;
+      } else {
+        updatedUser.avatar = updatedUser.avatar;
       }
 
       resolve({
@@ -140,8 +156,6 @@ const deleteUser = (userId) => {
       const checkUser = await User.findOne({
         _id: userId,
       });
-
-      console.log(checkUser);
 
       if (checkUser === null) {
         resolve({
@@ -190,7 +204,7 @@ const getAllUser = (userId) => {
       if (userId && userId !== "All") {
         users = await User.findOne({ _id: userId }, { password: 0 });
       }
-      // const allUser = await User.find().sort({ createdAt: -1, updatedAt: -1 });
+
       resolve({
         status: "OK",
         message: "Success",

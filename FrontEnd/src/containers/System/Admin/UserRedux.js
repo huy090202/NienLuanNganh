@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
-import { LANGUAGES, CRUD_ACTIONS } from "../../../utils";
+import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from "../../../utils";
 import * as actions from "../../../store/actions";
 import "./UserRedux.scss";
 
@@ -83,14 +83,15 @@ class UserRedux extends Component {
     }
   }
 
-  handleOnchangeAvatar = (event) => {
+  handleOnchangeAvatar = async (event) => {
     let data = event.target.files;
     let file = data[0];
     if (file) {
+      let base64 = await CommonUtils.getBase64(file);
       let objectUrl = URL.createObjectURL(file);
       this.setState({
         previewAvatarUrl: objectUrl,
-        avatar: file,
+        avatar: base64,
       });
     }
   };
@@ -155,6 +156,7 @@ class UserRedux extends Component {
         phone: this.state.phone,
         address: this.state.address,
         city: this.state.city,
+        avatar: this.state.avatar,
         gender: this.state.gender,
         roleId: this.state.roleId,
       });
@@ -170,6 +172,7 @@ class UserRedux extends Component {
         phone: this.state.phone,
         address: this.state.address,
         city: this.state.city,
+        avatar: this.state.avatar,
         gender: this.state.gender,
         roleId: this.state.roleId,
       });
@@ -181,20 +184,31 @@ class UserRedux extends Component {
   };
 
   handleEditUserFromParent = (user) => {
-    this.setState({
-      email: user.email,
-      name: user.name,
-      password: user.password, // ko hien thi password
-      confimpassword: user.confimpassword, // ko hien thi confimpassword
-      phone: user.phone,
-      address: user.address,
-      city: user.city,
-      gender: user.gender,
-      roleId: user.roleId,
-      avatar: "",
-      action: CRUD_ACTIONS.EDIT,
-      userEditId: user._id,
-    });
+    let imageBase64 = "";
+    if (user.avatar) {
+      imageBase64 = new Buffer(user.avatar, "base64").toString("binary");
+    }
+
+    this.setState(
+      {
+        email: user.email,
+        name: user.name,
+        password: user.password, // ko hien thi password
+        confimpassword: user.confimpassword, // ko hien thi confimpassword
+        phone: user.phone,
+        address: user.address,
+        city: user.city,
+        gender: user.gender,
+        roleId: user.roleId,
+        avatar: "",
+        previewAvatarUrl: imageBase64,
+        action: CRUD_ACTIONS.EDIT,
+        userEditId: user._id,
+      },
+      () => {
+        console.log("Huy check base64: ", this.state);
+      }
+    );
   };
 
   render() {
@@ -262,9 +276,9 @@ class UserRedux extends Component {
                   className="form-control"
                   value={password}
                   onChange={(event) => this.onChangeInput(event, "password")}
-                  disabled={
-                    this.state.action === CRUD_ACTIONS.EDIT ? true : false
-                  }
+                  // disabled={
+                  //   this.state.action === CRUD_ACTIONS.EDIT ? true : false
+                  // }
                 />
               </div>
               <div className="col-3">
@@ -278,9 +292,9 @@ class UserRedux extends Component {
                   onChange={(event) =>
                     this.onChangeInput(event, "confimpassword")
                   }
-                  disabled={
-                    this.state.action === CRUD_ACTIONS.EDIT ? true : false
-                  }
+                  // disabled={
+                  //   this.state.action === CRUD_ACTIONS.EDIT ? true : false
+                  // }
                 />
               </div>
               <div className="col-4">

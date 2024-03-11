@@ -6,12 +6,10 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     phone: { type: Number },
     address: { type: String },
-    avatar: { type: String },
+    avatar: { type: Buffer, maxlength: 16 * 1024 * 1024, default: null },
     gender: { type: String },
     city: { type: String },
     roleId: { type: String },
-    // isSeller: { type: Boolean, default: false, required: true },
-    // isAdmin: { type: Boolean, default: false, required: true },
   },
   {
     timestamps: true,
