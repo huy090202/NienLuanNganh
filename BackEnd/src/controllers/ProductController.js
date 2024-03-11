@@ -11,6 +11,7 @@ const createProduct = async (req, res) => {
       rating,
       description,
       discount,
+      selled,
     } = req.body;
     if (
       !name ||
@@ -37,8 +38,9 @@ const createProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   try {
-    const productId = req.params.id;
+    const productId = req.body.id;
     const data = req.body;
+
     if (!productId) {
       return res.status(200).json({
         status: "ERR",
@@ -46,10 +48,20 @@ const updateProduct = async (req, res) => {
       });
     }
     const response = await ProductService.updateProduct(productId, data);
-    return res.status(200).json(response);
+
+    if (response.status === "OK") {
+      return res.status(200).json(response);
+    } else {
+      return res.status(404).json({
+        status: "ERR",
+        message: response.message,
+      });
+    }
   } catch (e) {
+    console.error(e);
     return res.status(404).json({
-      message: e,
+      status: "ERR",
+      message: "Internal Server Error",
     });
   }
 };
@@ -74,7 +86,7 @@ const getDetailsProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   try {
-    const productId = req.params.id;
+    const productId = req.body.id;
     if (!productId) {
       return res.status(200).json({
         status: "ERR",
@@ -110,13 +122,15 @@ const deleteMany = async (req, res) => {
 
 const getAllProduct = async (req, res) => {
   try {
-    const { limit, page, sort, filter } = req.query;
-    const response = await ProductService.getAllProduct(
-      Number(limit) || null,
-      Number(page) || 0,
-      sort,
-      filter
-    );
+    const id = req.query.id;
+    if (!id) {
+      return res.status(200).json({
+        status: "ERR",
+        message: "The id is required",
+        products: [],
+      });
+    }
+    const response = await ProductService.getAllProduct(id);
     return res.status(200).json(response);
   } catch (e) {
     return res.status(404).json({
@@ -136,6 +150,17 @@ const getAllType = async (req, res) => {
   }
 };
 
+const roleProduct = async (req, res) => {
+  try {
+    const response = await ProductService.roleProduct(req.query.roleName);
+    return res.status(200).json(response);
+  } catch (e) {
+    return res.status(404).json({
+      message: "Error from server",
+    });
+  }
+};
+
 module.exports = {
   createProduct,
   updateProduct,
@@ -144,4 +169,5 @@ module.exports = {
   getAllProduct,
   deleteMany,
   getAllType,
+  roleProduct,
 };

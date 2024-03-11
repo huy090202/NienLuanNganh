@@ -11,17 +11,21 @@ const createProduct = (newProduct) => {
       rating,
       description,
       discount,
+      selled,
     } = newProduct;
+
     try {
       const checkProduct = await Product.findOne({
         name: name,
       });
+
       if (checkProduct !== null) {
         resolve({
           status: "ERR",
           message: "The name of product is already",
         });
       }
+
       const newProduct = await Product.create({
         name,
         image,
@@ -32,6 +36,7 @@ const createProduct = (newProduct) => {
         description,
         discount: Number(discount),
       });
+
       if (newProduct) {
         resolve({
           status: "OK",
@@ -51,6 +56,7 @@ const updateProduct = (id, data) => {
       const checkProduct = await Product.findOne({
         _id: id,
       });
+
       if (checkProduct === null) {
         resolve({
           status: "ERR",
@@ -61,6 +67,7 @@ const updateProduct = (id, data) => {
       const updatedProduct = await Product.findByIdAndUpdate(id, data, {
         new: true,
       });
+
       resolve({
         status: "OK",
         message: "SUCCESS",
@@ -78,6 +85,7 @@ const deleteProduct = (id) => {
       const checkProduct = await Product.findOne({
         _id: id,
       });
+
       if (checkProduct === null) {
         resolve({
           status: "ERR",
@@ -134,63 +142,21 @@ const getDetailsProduct = (id) => {
   });
 };
 
-const getAllProduct = (limit, page, sort, filter) => {
+const getAllProduct = (productId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const totalProduct = await Product.count();
-      let allProduct = [];
-      if (filter) {
-        const label = filter[0];
-        const allObjectFilter = await Product.find({
-          [label]: { $regex: filter[1] },
-        })
-          .limit(limit)
-          .skip(page * limit)
-          .sort({ createdAt: -1, updatedAt: -1 });
-        resolve({
-          status: "OK",
-          message: "Success",
-          data: allObjectFilter,
-          total: totalProduct,
-          pageCurrent: Number(page + 1),
-          totalPage: Math.ceil(totalProduct / limit),
-        });
+      let products = "";
+      if (productId === "All") {
+        products = await Product.find().sort({ createdAt: -1, updatedAt: -1 });
       }
-      if (sort) {
-        const objectSort = {};
-        objectSort[sort[1]] = sort[0];
-        const allProductSort = await Product.find()
-          .limit(limit)
-          .skip(page * limit)
-          .sort(objectSort)
-          .sort({ createdAt: -1, updatedAt: -1 });
-        resolve({
-          status: "OK",
-          message: "Success",
-          data: allProductSort,
-          total: totalProduct,
-          pageCurrent: Number(page + 1),
-          totalPage: Math.ceil(totalProduct / limit),
-        });
+      if (productId && productId !== "All") {
+        products = await Product.findOne({ _id: productId });
       }
-      if (!limit) {
-        allProduct = await Product.find().sort({
-          createdAt: -1,
-          updatedAt: -1,
-        });
-      } else {
-        allProduct = await Product.find()
-          .limit(limit)
-          .skip(page * limit)
-          .sort({ createdAt: -1, updatedAt: -1 });
-      }
+
       resolve({
         status: "OK",
         message: "Success",
-        data: allProduct,
-        total: totalProduct,
-        pageCurrent: Number(page + 1),
-        totalPage: Math.ceil(totalProduct / limit),
+        products,
       });
     } catch (e) {
       reject(e);
@@ -213,6 +179,28 @@ const getAllType = () => {
   });
 };
 
+const roleProduct = (typeInput) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!typeInput) {
+        resolve({
+          status: "ERR",
+          message: "The roleName is required",
+        });
+      }
+
+      const dataRole = await Product.find({ roleName: typeInput });
+      resolve({
+        status: "OK",
+        message: "SUCCESS",
+        data: dataRole,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   createProduct,
   updateProduct,
@@ -221,4 +209,5 @@ module.exports = {
   getAllProduct,
   deleteManyProduct,
   getAllType,
+  roleProduct,
 };

@@ -17,6 +17,7 @@ const createUser = (newUser) => {
       roleId,
       avatar,
     } = newUser;
+
     try {
       const checkUser = await User.findOne({
         email: email,
@@ -245,7 +246,7 @@ const roleUser = (typeInput) => {
       if (!typeInput) {
         resolve({
           status: "ERR",
-          message: "The role is required",
+          message: "The roleName is required",
         });
       }
       const dataRole = await Role.find({ roleName: typeInput });
