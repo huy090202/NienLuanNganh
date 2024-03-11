@@ -116,7 +116,7 @@ const updateUser = (id, data) => {
         useFindAndModify: false,
       });
 
-      if (!updatedUser) {
+      if (!updatedUser || !data.roleId || !data.gender) {
         resolve({
           status: "ERR",
           message: "The user is not defined",
