@@ -189,26 +189,21 @@ class UserRedux extends Component {
       imageBase64 = new Buffer(user.avatar, "base64").toString("binary");
     }
 
-    this.setState(
-      {
-        email: user.email,
-        name: user.name,
-        password: user.password, // ko hien thi password
-        confimpassword: user.confimpassword, // ko hien thi confimpassword
-        phone: user.phone,
-        address: user.address,
-        city: user.city,
-        gender: user.gender,
-        roleId: user.roleId,
-        avatar: "",
-        previewAvatarUrl: imageBase64,
-        action: CRUD_ACTIONS.EDIT,
-        userEditId: user._id,
-      },
-      () => {
-        console.log("Huy check base64: ", this.state);
-      }
-    );
+    this.setState({
+      email: user.email,
+      name: user.name,
+      password: user.password, // ko hien thi password
+      confimpassword: user.confimpassword, // ko hien thi confimpassword
+      phone: user.phone,
+      address: user.address,
+      city: user.city,
+      gender: user.gender,
+      roleId: user.roleId,
+      avatar: "",
+      previewAvatarUrl: imageBase64,
+      action: CRUD_ACTIONS.EDIT,
+      userEditId: user._id,
+    });
   };
 
   render() {

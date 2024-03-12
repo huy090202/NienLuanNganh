@@ -5,6 +5,9 @@ const initialState = {
   isLoadingGender: false,
   roles: [],
   users: [],
+  products: [],
+  typeRoleProducts: [],
+  isLoadingRoleProduct: false,
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -50,7 +53,29 @@ const adminReducer = (state = initialState, action) => {
         ...state,
       };
 
-    // Read all user
+    // Type role product
+    case actionTypes.FETCH_TYPE_ROLE_PRODUCT_START:
+      let copyStateRoleProduct = { ...state };
+      copyStateRoleProduct.isLoadingRoleProduct = true;
+      return {
+        ...copyStateRoleProduct,
+      };
+
+    case actionTypes.FETCH_TYPE_ROLE_PRODUCT_SUCCESS:
+      state.typeRoleProducts = action.data;
+      state.isLoadingRoleProduct = false;
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_TYPE_ROLE_PRODUCT_FAILED:
+      state.isLoadingRoleProduct = false;
+      state.typeRoleProducts = [];
+      return {
+        ...state,
+      };
+
+    // Read all users
     case actionTypes.FETCH_ALL_USERS_SUCCESS:
       state.users = action.data;
       return {
@@ -59,6 +84,19 @@ const adminReducer = (state = initialState, action) => {
 
     case actionTypes.FETCH_ALL_USERS_FAILED:
       state.users = [];
+      return {
+        ...state,
+      };
+
+    // Read all products
+    case actionTypes.FETCH_ALL_PRODUCTS_SUCCESS:
+      state.products = action.dataProducts;
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_ALL_PRODUCTS_FAILED:
+      state.products = [];
       return {
         ...state,
       };

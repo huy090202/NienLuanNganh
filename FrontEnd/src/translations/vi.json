@@ -20,6 +20,7 @@
       "manage-admin": "Quản lý quản trị viên",
       "crud": "CRUD User",
       "crud-redux": "CRUD User Redux",
+      "product-redux": "CRUD product Redux",
       "shop": "Cửa hàng",
       "manage-shop": "Quản lý cửa hàng",
       "catalog": "Danh mục",
@@ -41,6 +42,19 @@
     "role": "Vai trò",
     "avatar": "Ảnh đại diện",
     "save": "Lưu nguời dùng",
+    "edit": "Lưu thay đổi"
+  },
+  "manage-product": {
+    "add": "Thêm mới sản phẩm",
+    "name": "Tên sản phẩm",
+    "price": "Giá sản phẩm",
+    "countInStock": "Số lượng trong kho",
+    "description": "Miêu tả sản phẩm",
+    "discount": "Giảm giá",
+    "selled": "Đã bán",
+    "type": "Loại sản phẩm",
+    "image": "Ảnh sản phẩm",
+    "save": "Lưu sản phẩm",
     "edit": "Lưu thay đổi"
   }
 }

@@ -9,7 +9,6 @@ const createProduct = (newProduct) => {
       type,
       countInStock,
       price,
-      rating,
       description,
       discount,
       selled,
@@ -33,9 +32,9 @@ const createProduct = (newProduct) => {
         type,
         countInStock: Number(countInStock),
         price,
-        rating,
         description,
         discount: Number(discount),
+        selled,
       });
 
       if (newProduct) {

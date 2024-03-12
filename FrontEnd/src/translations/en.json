@@ -20,6 +20,7 @@
       "manage-admin": "Manage Admins",
       "crud": "CRUD User",
       "crud-redux": "CRUD User Redux",
+      "product-redux": "CRUD product Redux",
       "shop": "Shops",
       "manage-shop": "Manage Shops",
       "catalog": "Catalogs",
@@ -42,5 +43,18 @@
     "avatar": "Avatar",
     "save": "Save user",
     "edit": "Save changes"
+  },
+  "manage-product": {
+    "add": "Add a new product",
+    "name": "Name",
+    "price": "Price",
+    "countInStock": "Count in stock",
+    "description": "Description",
+    "discount": "Discount",
+    "selled": "Selled",
+    "type": "Type",
+    "image": "Image",
+    "save": "Save product",
+    "edit": "Lưu changes"
   }
 }
