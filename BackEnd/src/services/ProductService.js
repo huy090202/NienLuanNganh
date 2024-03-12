@@ -1,4 +1,5 @@
 const Product = require("../models/ProductModel");
+const Role = require("../models/RoleModel");
 
 const createProduct = (newProduct) => {
   return new Promise(async (resolve, reject) => {
@@ -179,7 +180,7 @@ const getAllType = () => {
   });
 };
 
-const roleProduct = (typeInput) => {
+const typeRoleProduct = (typeInput) => {
   return new Promise(async (resolve, reject) => {
     try {
       if (!typeInput) {
@@ -189,7 +190,7 @@ const roleProduct = (typeInput) => {
         });
       }
 
-      const dataRole = await Product.find({ roleName: typeInput });
+      const dataRole = await Role.find({ roleName: typeInput });
       resolve({
         status: "OK",
         message: "SUCCESS",
@@ -209,5 +210,5 @@ module.exports = {
   getAllProduct,
   deleteManyProduct,
   getAllType,
-  roleProduct,
+  typeRoleProduct,
 };

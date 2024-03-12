@@ -10,7 +10,6 @@ const productSchema = new mongoose.Schema(
     description: { type: String },
     discount: { type: Number },
     selled: { type: Number },
-    roleId: { type: String },
   },
   {
     timestamps: true,

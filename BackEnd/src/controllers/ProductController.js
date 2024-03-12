@@ -150,9 +150,9 @@ const getAllType = async (req, res) => {
   }
 };
 
-const roleProduct = async (req, res) => {
+const typeRoleProduct = async (req, res) => {
   try {
-    const response = await ProductService.roleProduct(req.query.roleName);
+    const response = await ProductService.typeRoleProduct(req.query.roleName);
     return res.status(200).json(response);
   } catch (e) {
     return res.status(404).json({
@@ -169,5 +169,5 @@ module.exports = {
   getAllProduct,
   deleteMany,
   getAllType,
-  roleProduct,
+  typeRoleProduct,
 };
