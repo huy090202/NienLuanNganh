@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
-import "./TableManageUser.scss";
+import "./TableManage.scss";
 import * as actions from "../../../store/actions";
 
 class TableManageUser extends Component {
@@ -34,7 +34,7 @@ class TableManageUser extends Component {
   render() {
     let arrUsers = this.state.userRedux;
     return (
-      <table id="TableManageUser">
+      <table id="TableManage">
         <tbody>
           <tr>
             <th>Email</th>

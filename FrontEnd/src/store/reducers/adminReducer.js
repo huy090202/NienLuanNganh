@@ -8,6 +8,7 @@ const initialState = {
   products: [],
   typeRoleProducts: [],
   isLoadingRoleProduct: false,
+  catalogs: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -97,6 +98,19 @@ const adminReducer = (state = initialState, action) => {
 
     case actionTypes.FETCH_ALL_PRODUCTS_FAILED:
       state.products = [];
+      return {
+        ...state,
+      };
+
+    // Read all catalogs
+    case actionTypes.FETCH_ALL_CATALOGS_SUCCESS:
+      state.catalogs = action.dataCatalogs;
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_ALL_CATALOGS_FAILED:
+      state.catalogs = [];
       return {
         ...state,
       };

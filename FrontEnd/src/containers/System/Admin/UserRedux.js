@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from "../../../utils";
 import * as actions from "../../../store/actions";
-import "./UserRedux.scss";
+import "./PreviewAvatar.scss";
 
 import PreviewModal from "./PreviewAvatar";
 import TableManageUser from "./TableManageUser";
@@ -227,13 +227,12 @@ class UserRedux extends Component {
 
     return (
       <div className="user-redux-container">
-        <div className="title">Quản lý người dùng</div>
+        <div className="title mb-5">
+          <FormattedMessage id="manage-user.manage" />
+        </div>
         <div className="user-redux-body">
           <div className="container">
             <div className="row">
-              <div className="col-12 my-4">
-                <FormattedMessage id="manage-user.add" />
-              </div>
               <div className="col-12">
                 {isLoadingGender === true ? "Loading genders" : ""}
               </div>

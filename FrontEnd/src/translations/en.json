@@ -30,7 +30,7 @@
     }
   },
   "manage-user": {
-    "add": "Add a new user",
+    "manage": "Manage user",
     "email": "Email",
     "name": "Name",
     "password": "Password",
@@ -45,7 +45,7 @@
     "edit": "Save changes"
   },
   "manage-product": {
-    "add": "Add a new product",
+    "manage": "Manage product",
     "name": "Name",
     "price": "Price",
     "countInStock": "Count in stock",
@@ -55,6 +55,16 @@
     "type": "Type",
     "image": "Image",
     "save": "Save product",
-    "edit": "Lưu changes"
+    "edit": "Save changes"
+  },
+  "manage-catalog": {
+    "manage": "Manage catalogs",
+    "roleName": "Type catalog",
+    "roleKey": "Key catalog",
+    "roleValueEn": "Name English catalog",
+    "roleValueVi": "Name Vietnamese catalog",
+    "roleImage": "Image catalog",
+    "save": "Save catalog",
+    "edit": "Save changes"
   }
 }

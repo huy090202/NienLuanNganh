@@ -14,6 +14,13 @@ import {
   editProductService,
   getRoleProductService,
 } from "../../services/productService";
+
+import {
+  getAllCatalogs,
+  createNewCatalogService,
+  deleteCatalogService,
+  editCatalogService,
+} from "../../services/catalogService";
 import { toast } from "react-toastify";
 
 // Gender
@@ -84,7 +91,7 @@ export const fetchTypeRoleProductStart = () => {
         type: actionTypes.FETCH_TYPE_ROLE_PRODUCT_START,
       });
 
-      let res = await getRoleProductService("Product");
+      let res = await getRoleProductService("Catalog");
       if (res && res.status === "OK") {
         dispatch(fetchTypeRoleProductSuccess(res.data));
       } else {
@@ -323,7 +330,7 @@ export const editAProduct = (data) => {
     } catch (error) {
       toast.error("Update the Product error!");
       dispatch(editProductFailed());
-      console.log("editAProduct error: ", error);
+      console.log("editProductFailed error: ", error);
     }
   };
 };
@@ -334,4 +341,119 @@ export const editProductSuccess = () => ({
 
 export const editProductFailed = () => ({
   type: actionTypes.EDIT_PRODUCT_FAILED,
+});
+
+// Create a new catalog
+export const createNewCatalog = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await createNewCatalogService(data);
+      if (res && res.status === "OK") {
+        toast.success("Create a new catalog success!");
+        dispatch(saveCatalogSuccess());
+        dispatch(fetchAllCatalogsStart());
+      } else {
+        toast.error("Create a new catalog error!");
+        dispatch(saveCatalogFailed());
+      }
+    } catch (error) {
+      toast.error("Create a new catalog error!");
+      dispatch(saveCatalogFailed());
+      console.log("saveCatalogFailed error: ", error);
+    }
+  };
+};
+
+export const saveCatalogSuccess = () => ({
+  type: actionTypes.CREATE_CATALOG_SUCCESS,
+});
+
+export const saveCatalogFailed = () => ({
+  type: actionTypes.CREATE_CATALOG_FAILED,
+});
+
+// Read all catalog
+export const fetchAllCatalogsStart = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllCatalogs("Catalog");
+      if (res && res.status === "OK") {
+        dispatch(fetchAllCatalogsSuccess(res.roles));
+      } else {
+        toast.error("Fetch all catalogs error!");
+        dispatch(fetchAllCatalogsFailed());
+      }
+    } catch (error) {
+      toast.error("Fetch all catalogs error!");
+      dispatch(fetchAllCatalogsFailed());
+      console.log("fetchAllCatalogsFailed error: ", error);
+    }
+  };
+};
+
+export const fetchAllCatalogsSuccess = (catalogData) => ({
+  type: actionTypes.FETCH_ALL_CATALOGS_SUCCESS,
+  dataCatalogs: catalogData,
+});
+
+export const fetchAllCatalogsFailed = () => ({
+  type: actionTypes.FETCH_ALL_CATALOGS_FAILED,
+});
+
+// Delete a catalog
+export const deleteACatalog = (catalogId) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await deleteCatalogService(catalogId);
+      if (res && res.status === "OK") {
+        toast.success("Delete the catalog success!");
+        dispatch(deleteCatalogSuccess());
+        dispatch(fetchAllCatalogsStart());
+      } else {
+        toast.error("Delete the catalog error!");
+        dispatch(deleteCatalogFailed());
+      }
+    } catch (error) {
+      toast.error("Delete the catalog error!");
+      dispatch(deleteCatalogFailed());
+      console.log("deleteCatalogFailed error: ", error);
+    }
+  };
+};
+
+export const deleteCatalogSuccess = () => ({
+  type: actionTypes.DELETE_CATALOG_SUCCESS,
+});
+
+export const deleteCatalogFailed = () => ({
+  type: actionTypes.DELETE_CATALOG_FAILED,
+});
+
+// Edit a catalog
+export const editACatalog = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await editCatalogService(data);
+      if (res && res.status === "OK") {
+        toast.success("Update the catalog success!");
+        dispatch(editCatalogSuccess());
+        dispatch(fetchAllCatalogsStart());
+      } else {
+        toast.error("Update the catalog error!");
+        dispatch(editCatalogFailed());
+      }
+    } catch (error) {
+      toast.error("Update the catalog error!");
+      dispatch(editCatalogFailed());
+      console.log("editCatalogFailed error: ", error);
+    }
+  };
+};
+
+export const editCatalogSuccess = () => ({
+  type: actionTypes.EDIT_CATALOG_SUCCESS,
+});
+
+export const editCatalogFailed = () => ({
+  type: actionTypes.EDIT_CATALOG_FAILED,
 });

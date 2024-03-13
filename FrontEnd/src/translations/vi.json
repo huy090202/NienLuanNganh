@@ -30,7 +30,7 @@
     }
   },
   "manage-user": {
-    "add": "Thêm mới người dùng",
+    "manage": "Quản lý người dùng",
     "email": "Email",
     "name": "Tên",
     "password": "Mật khẩu",
@@ -45,7 +45,7 @@
     "edit": "Lưu thay đổi"
   },
   "manage-product": {
-    "add": "Thêm mới sản phẩm",
+    "manage": "Quản lý sản phẩm",
     "name": "Tên sản phẩm",
     "price": "Giá sản phẩm",
     "countInStock": "Số lượng trong kho",
@@ -55,6 +55,16 @@
     "type": "Loại sản phẩm",
     "image": "Ảnh sản phẩm",
     "save": "Lưu sản phẩm",
+    "edit": "Lưu thay đổi"
+  },
+  "manage-catalog": {
+    "manage": "Quản lý danh mục",
+    "roleName": "Loại danh mục",
+    "roleKey": "Key danh mục",
+    "roleValueEn": "Tên danh mục tiếng Anh",
+    "roleValueVi": "Tên danh mục tiếng Việt",
+    "roleImage": "Ảnh danh mục",
+    "save": "Lưu danh mục",
     "edit": "Lưu thay đổi"
   }
 }

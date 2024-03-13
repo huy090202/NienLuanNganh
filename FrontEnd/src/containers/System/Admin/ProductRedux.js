@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from "../../../utils";
 import * as actions from "../../../store/actions";
-import "./ProductRedux.scss";
+import "./PreviewAvatar.scss";
 
 import PreviewModal from "./PreviewAvatar";
 import TableManageProduct from "./TableManageProduct";
@@ -196,13 +196,12 @@ class ProductRedux extends Component {
 
     return (
       <div className="user-redux-container">
-        <div className="title">Quản lý sản phẩm</div>
+        <div className="title mb-5">
+          <FormattedMessage id="manage-product.manage" />
+        </div>
         <div className="user-redux-body">
           <div className="container">
             <div className="row">
-              <div className="col-12 my-4">
-                <FormattedMessage id="manage-product.add" />
-              </div>
               <div className="col-12">
                 {isLoadingRoleProduct === true ? "Loading role product" : ""}
               </div>

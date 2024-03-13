@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
-import "./TableManageProduct.scss";
+import "./TableManage.scss";
 import * as actions from "../../../store/actions";
 
 class TableManageProduct extends Component {
@@ -35,7 +35,7 @@ class TableManageProduct extends Component {
     console.log("this.state.productRedux: ", this.props.listProducts);
     let arrProducts = this.state.productRedux;
     return (
-      <table id="TableManageProduct">
+      <table id="TableManage">
         <tbody>
           <tr>
             <th>Name</th>

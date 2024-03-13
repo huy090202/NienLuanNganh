@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
-import "./UserRedux.scss";
+import "./PreviewAvatar.scss";
 
 const PreviewModal = ({ isOpen, imageUrl, onCloseModal }) => {
   return (
