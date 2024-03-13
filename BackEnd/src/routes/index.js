@@ -1,13 +1,15 @@
-const UserRouter = require('./UserRouter')
-const ProductRouter = require('./ProductRouter')
-const OrderRouter = require('./OrderRouter')
-const PaymentRouter = require('./PaymentRouter')
+const UserRouter = require("./UserRouter");
+const ProductRouter = require("./ProductRouter");
+const OrderRouter = require("./OrderRouter");
+const PaymentRouter = require("./PaymentRouter");
+const RoleRouter = require("./RoleRouter");
 
 const routes = (app) => {
-    app.use('/api/user', UserRouter)
-    app.use('/api/product', ProductRouter)
-    app.use('/api/order', OrderRouter)
-    app.use('/api/payment', PaymentRouter)
-}
+  app.use("/api/user", UserRouter);
+  app.use("/api/product", ProductRouter);
+  app.use("/api/order", OrderRouter);
+  app.use("/api/payment", PaymentRouter);
+  app.use("/api/role", RoleRouter);
+};
 
-module.exports = routes
+module.exports = routes;
