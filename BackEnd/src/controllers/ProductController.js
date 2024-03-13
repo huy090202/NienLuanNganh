@@ -12,7 +12,7 @@ const createProduct = async (req, res) => {
       discount,
       selled,
     } = req.body;
-    if (!name || !image || !type || !countInStock || !price || !discount) {
+    if (!name || !image || !type || !countInStock || !price) {
       return res.status(200).json({
         status: "ERR",
         message: "The input is required",

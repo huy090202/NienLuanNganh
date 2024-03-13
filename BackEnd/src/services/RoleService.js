@@ -102,6 +102,10 @@ const updateRole = (id, data) => {
         new: true,
       });
 
+      if (data.roleImage) {
+        updatedRole.roleImage = data.roleImage;
+      }
+
       resolve({
         status: "OK",
         message: "SUCCESS",

@@ -33,7 +33,7 @@ const createProduct = (newProduct) => {
         countInStock: Number(countInStock),
         price,
         description,
-        discount: Number(discount),
+        discount,
         selled,
       });
 
@@ -53,24 +53,29 @@ const createProduct = (newProduct) => {
 const updateProduct = (id, data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const checkProduct = await Product.findOne({
-        _id: id,
-      });
+      const updatedProduct = await Product.findByIdAndUpdate(
+        { _id: id },
+        data,
+        {
+          new: true,
+        }
+      );
 
-      if (checkProduct === null) {
+      if (updatedProduct === null) {
         resolve({
           status: "ERR",
           message: "The product is not defined",
         });
       }
 
-      const updatedProduct = await Product.findByIdAndUpdate(id, data, {
-        new: true,
-      });
+      // Check image
+      if (data.image) {
+        updatedProduct.image = data.image;
+      }
 
       resolve({
         status: "OK",
-        message: "SUCCESS",
+        message: "Update the product success",
         data: updatedProduct,
       });
     } catch (e) {

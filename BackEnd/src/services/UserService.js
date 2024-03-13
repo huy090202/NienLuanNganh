@@ -136,8 +136,6 @@ const updateUser = (id, data) => {
       // Check avatar
       if (data.avatar) {
         updatedUser.avatar = data.avatar;
-      } else {
-        updatedUser.avatar = updatedUser.avatar;
       }
 
       resolve({
