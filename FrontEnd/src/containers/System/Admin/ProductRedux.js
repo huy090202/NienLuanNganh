@@ -214,9 +214,6 @@ class ProductRedux extends Component {
                   className="form-control"
                   value={name}
                   onChange={(event) => this.onChangeInput(event, "name")}
-                  disabled={
-                    this.state.action === CRUD_ACTIONS.EDIT ? true : false
-                  }
                 />
               </div>
               <div className="col-3">

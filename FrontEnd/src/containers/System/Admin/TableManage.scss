@@ -2,12 +2,17 @@
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  overflow-x: auto;
 }
 
 #TableManage td,
 #TableManage th {
   border: 1px solid #ddd;
   padding: 8px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #TableManage tr:nth-child(even) {

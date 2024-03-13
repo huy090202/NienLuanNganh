@@ -161,9 +161,6 @@ class Catalog extends Component {
                   className="form-control"
                   value={roleName}
                   onChange={(event) => this.onChangeInput(event, "roleName")}
-                  disabled={
-                    this.state.action === CRUD_ACTIONS.EDIT ? true : false
-                  }
                 />
               </div>
               <div className="col-3">
