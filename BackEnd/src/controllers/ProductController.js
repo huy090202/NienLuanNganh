@@ -153,6 +153,20 @@ const typeRoleProduct = async (req, res) => {
   }
 };
 
+const getTopProductHome = async (req, res) => {
+  try {
+    let limit = req.query.limit || 12;
+    let response = await ProductService.getTopProductHome(+limit);
+    return res.status(200).json(response);
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      status: "ERR",
+      message: "Error from server...",
+    });
+  }
+};
+
 module.exports = {
   createProduct,
   updateProduct,
@@ -162,4 +176,5 @@ module.exports = {
   deleteMany,
   getAllType,
   typeRoleProduct,
+  getTopProductHome,
 };

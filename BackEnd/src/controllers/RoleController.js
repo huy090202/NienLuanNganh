@@ -85,9 +85,13 @@ const updateRole = async (req, res) => {
   }
 };
 
+// Load all danh muc
+const getCatalog = async (req, res) => {};
+
 module.exports = {
   createRole,
   getAllRole,
   deleteRole,
   updateRole,
+  getCatalog,
 };

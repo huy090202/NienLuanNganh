@@ -206,6 +206,54 @@ const typeRoleProduct = (typeInput) => {
   });
 };
 
+const getTopProductHome = (limit) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let products = await Product.aggregate([
+        { $sample: { size: Number(limit) } },
+        // Hien thi type theo roleValueVi || roleValueEn thay vi hien thi theo roleKey
+        {
+          $lookup: {
+            from: "roles",
+            localField: "type",
+            foreignField: "roleKey",
+            as: "roleInfo",
+          },
+        },
+        { $unwind: "$roleInfo" },
+        {
+          $project: {
+            _id: 1,
+            name: 1,
+            image: 1,
+            type: {
+              $cond: {
+                if: { $eq: [{ $type: "$roleInfo.roleValueVi" }, "missing"] },
+                then: "$roleInfo.roleValueEn",
+                else: "$roleInfo.roleValueVi",
+              },
+            },
+            price: 1,
+            countInStock: 1,
+            description: 1,
+            discount: 1,
+            selled: 1,
+            createdAt: 1,
+          },
+        },
+        { $sort: { createdAt: -1 } },
+      ]);
+      resolve({
+        status: "OK",
+        message: "SUCCESS",
+        data: products,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   createProduct,
   updateProduct,
@@ -215,4 +263,5 @@ module.exports = {
   deleteManyProduct,
   getAllType,
   typeRoleProduct,
+  getTopProductHome,
 };
