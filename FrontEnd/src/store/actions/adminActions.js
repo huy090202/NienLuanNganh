@@ -13,6 +13,7 @@ import {
   deleteProductService,
   editProductService,
   getRoleProductService,
+  getTopProductsHomeService,
 } from "../../services/productService";
 
 import {
@@ -457,3 +458,27 @@ export const editCatalogSuccess = () => ({
 export const editCatalogFailed = () => ({
   type: actionTypes.EDIT_CATALOG_FAILED,
 });
+
+// Fetch top product
+export const fetchTopProducts = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getTopProductsHomeService(""); // K truyen j thi mac dinh = 12
+      if (res && res.status === "OK") {
+        dispatch({
+          type: actionTypes.FETCH_TOP_PRODUCTS_SUCCESS,
+          dataTopProducts: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_TOP_PRODUCTS_FAILED,
+        });
+      }
+    } catch (error) {
+      console.log("fetchTopProducts error: ", error);
+      dispatch({
+        type: actionTypes.FETCH_TOP_PRODUCTS_FAILED,
+      });
+    }
+  };
+};

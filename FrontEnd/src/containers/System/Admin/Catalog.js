@@ -36,6 +36,7 @@ class Catalog extends Component {
         roleValueVi: "",
         roleImage: "",
         action: CRUD_ACTIONS.CREATE,
+        previewAvatarUrl: "",
       });
     }
   }

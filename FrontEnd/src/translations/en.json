@@ -66,5 +66,11 @@
     "roleImage": "Image catalog",
     "save": "Save catalog",
     "edit": "Save changes"
+  },
+  "homepage": {
+    "catalog": "Catalogs",
+    "selling-products": "Selling products",
+    "suggest-today": "Suggest today",
+    "more-infor": "More infor"
   }
 }

@@ -66,5 +66,11 @@
     "roleImage": "Ảnh danh mục",
     "save": "Lưu danh mục",
     "edit": "Lưu thay đổi"
+  },
+  "homepage": {
+    "catalog": "Danh mục",
+    "selling-products": "Sản phẩm bán chạy",
+    "suggest-today": "Gợi ý hôm nay",
+    "more-infor": "Xem thêm"
   }
 }

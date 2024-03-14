@@ -22,10 +22,15 @@ const getRoleProductService = (inputRoleName) => {
   return axios.get(`/api/product/roleType?roleName=${inputRoleName}`);
 };
 
+const getTopProductsHomeService = (limit) => {
+  return axios.get(`/api/product/getTopProductHome?limit=${limit}`);
+};
+
 export {
   getAllProducts,
   createNewProductService,
   deleteProductService,
   editProductService,
   getRoleProductService,
+  getTopProductsHomeService,
 };

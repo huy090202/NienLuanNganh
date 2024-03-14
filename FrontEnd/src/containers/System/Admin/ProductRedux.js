@@ -63,6 +63,7 @@ class ProductRedux extends Component {
             : "",
         image: "",
         action: CRUD_ACTIONS.CREATE,
+        previewAvatarUrl: "",
       });
     }
   }
