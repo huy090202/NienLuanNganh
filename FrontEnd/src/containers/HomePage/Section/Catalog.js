@@ -4,9 +4,32 @@ import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../../utils";
 
 import Slider from "react-slick";
+import * as actions from "../../../store/actions";
 
 class Catalog extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      arrCatalogs: [],
+    };
+  }
+
+  componentDidMount() {
+    this.props.loadAllCatalogs();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.listCatalogs !== this.props.listCatalogs) {
+      this.setState({
+        arrCatalogs: this.props.listCatalogs,
+      });
+    }
+  }
+
   render() {
+    let arrCatalogs = this.state.arrCatalogs;
+    let { language } = this.props;
+
     return (
       <div className="section-share section-catalog">
         <div className="section-container">
@@ -14,72 +37,37 @@ class Catalog extends Component {
             <span className="title-section">
               <FormattedMessage id="homepage.catalog" />
             </span>
-            <button className="btn-section">
-              <FormattedMessage id="homepage.more-infor" />
-            </button>
           </div>
           <div className="section-body">
             <Slider {...this.props.settings1}>
-              <div className="img-customize">
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 1</div>
-                </div>
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 7</div>
-                </div>
-              </div>
-              <div className="img-customize">
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 2</div>
-                </div>
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 8</div>
-                </div>
-              </div>
-              <div className="img-customize">
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 3</div>
-                </div>
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 9</div>
-                </div>
-              </div>
-              <div className="img-customize">
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 4</div>
-                </div>
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 10</div>
-                </div>
-              </div>
-              <div className="img-customize">
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 5</div>
-                </div>
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 11</div>
-                </div>
-              </div>
-              <div className="img-customize">
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 6</div>
-                </div>
-                <div className="catalog-img">
-                  <div className="img-son" />
-                  <div className="img-title">Mục 12</div>
-                </div>
-              </div>
+              {arrCatalogs &&
+                arrCatalogs.length > 0 &&
+                arrCatalogs.map((item, index) => {
+                  let imageBase64 = "";
+                  if (item.roleImage) {
+                    imageBase64 = new Buffer(item.roleImage, "base64").toString(
+                      "binary"
+                    );
+                  }
+
+                  let nameCatalogVi = `${item.roleValueVi}`;
+                  let nameCatalogEn = `${item.roleValueEn}`;
+                  return (
+                    <div className="img-customize " key={index}>
+                      <div className="catalog-img">
+                        <div
+                          className="img-son"
+                          style={{ backgroundImage: `url(${imageBase64})` }}
+                        />
+                        <div className="img-title text-center">
+                          {language === LANGUAGES.VI
+                            ? nameCatalogVi
+                            : nameCatalogEn}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
             </Slider>
           </div>
         </div>
@@ -92,11 +80,14 @@ const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
     language: state.app.language,
+    listCatalogs: state.admin.catalogs,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    loadAllCatalogs: () => dispatch(actions.fetchAllCatalogsStart()),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Catalog);
