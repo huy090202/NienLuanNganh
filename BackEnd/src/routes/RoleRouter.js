@@ -6,7 +6,7 @@ router.post("/createRole", RoleController.createRole);
 
 router.get("/getAllRole", RoleController.getAllRole);
 
-router.get("/getCatalog", RoleController.getCatalog);
+// router.get("/getCatalog", RoleController.getCatalog);
 
 router.delete("/deleteRole", RoleController.deleteRole);
 

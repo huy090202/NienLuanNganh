@@ -152,7 +152,9 @@ const getAllProduct = (productId) => {
     try {
       let products = "";
       if (productId === "All") {
-        products = await Product.find().sort({ createdAt: -1, updatedAt: -1 });
+        products = await Product.aggregate([
+          { $sample: { size: 20 } }, // Lấy n mẫu ngẫu nhiên từ danh sách sản phẩm
+        ]);
       }
       if (productId && productId !== "All") {
         products = await Product.findOne({ _id: productId });

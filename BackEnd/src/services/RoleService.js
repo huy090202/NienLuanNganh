@@ -117,13 +117,9 @@ const updateRole = (id, data) => {
   });
 };
 
-// Load all danh muc
-const getCatalog = () => {};
-
 module.exports = {
   createRole,
   getAllRole,
   deleteRole,
   updateRole,
-  getCatalog,
 };
