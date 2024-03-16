@@ -1,5 +1,6 @@
 const Product = require("../models/ProductModel");
 const Role = require("../models/RoleModel");
+const Description = require("../models/descriptionModel");
 
 const createProduct = (newProduct) => {
   return new Promise(async (resolve, reject) => {
@@ -256,6 +257,52 @@ const getTopProductHome = (limit) => {
   });
 };
 
+const getAllProductsDescription = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let description = await Product.find(
+        { roleName: "Catalog" },
+        { image: 0 }
+      );
+
+      resolve({
+        status: "OK",
+        message: "SUCCESS",
+        data: description,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+const saveProductDescription = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!data.typeProductId || !data.contentHtml || !data.contentMarkdown) {
+        resolve({
+          status: "ERR",
+          message: "Missing input data!",
+        });
+      }
+
+      const checkProduct = await Description.create({
+        typeProductId: data.typeProductId,
+        contentHtml: data.contentHtml,
+        contentMarkdown: data.contentMarkdown,
+      });
+
+      resolve({
+        status: "OK",
+        message: "Save infor product description success!",
+        checkProduct,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   createProduct,
   updateProduct,
@@ -266,4 +313,6 @@ module.exports = {
   getAllType,
   typeRoleProduct,
   getTopProductHome,
+  getAllProductsDescription,
+  saveProductDescription,
 };

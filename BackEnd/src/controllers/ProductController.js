@@ -167,6 +167,33 @@ const getTopProductHome = async (req, res) => {
   }
 };
 
+const getAllProductsDescription = async (req, res) => {
+  try {
+    let description = await ProductService.getAllProductsDescription();
+    return res.status(200).json(description);
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      status: "ERR",
+      message: "Error from the server...",
+    });
+  }
+};
+
+const saveProductDescription = async (req, res) => {
+  try {
+    let data = req.body;
+    let response = await ProductService.saveProductDescription(data);
+    return res.status(200).json(response);
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      status: "ERR",
+      message: "Error from the server...",
+    });
+  }
+};
+
 module.exports = {
   createProduct,
   updateProduct,
@@ -177,4 +204,6 @@ module.exports = {
   getAllType,
   typeRoleProduct,
   getTopProductHome,
+  getAllProductsDescription,
+  saveProductDescription,
 };

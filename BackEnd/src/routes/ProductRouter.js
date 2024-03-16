@@ -23,6 +23,16 @@ router.get("/get-all", ProductController.getAllProduct);
 
 router.get("/getTopProductHome", ProductController.getTopProductHome);
 
+router.get(
+  "/getAllProductsDescription",
+  ProductController.getAllProductsDescription
+);
+
+router.post(
+  "/saveProductDescription",
+  ProductController.saveProductDescription
+);
+
 router.post("/delete-many", authMiddleWare, ProductController.deleteMany);
 
 router.get("/get-all-type", ProductController.getAllType);
