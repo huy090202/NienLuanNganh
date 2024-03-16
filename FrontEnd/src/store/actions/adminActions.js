@@ -14,6 +14,8 @@ import {
   editProductService,
   getRoleProductService,
   getTopProductsHomeService,
+  getAllProductsDescription,
+  saveProductDescription,
 } from "../../services/productService";
 
 import {
@@ -478,6 +480,56 @@ export const fetchTopProducts = () => {
       console.log("fetchTopProducts error: ", error);
       dispatch({
         type: actionTypes.FETCH_TOP_PRODUCTS_FAILED,
+      });
+    }
+  };
+};
+
+// Fetch all product description
+export const fetchAllProductsDescription = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllProductsDescription();
+      if (res && res.status === "OK") {
+        dispatch({
+          type: actionTypes.FETCH_ALL_PRODUCTS_DESCRIPTION_SUCCESS,
+          dataAllProductsDescription: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_ALL_PRODUCTS_DESCRIPTION_FAILED,
+        });
+      }
+    } catch (error) {
+      console.log("fetchAllProductsDescription error: ", error);
+      dispatch({
+        type: actionTypes.FETCH_ALL_PRODUCTS_DESCRIPTION_FAILED,
+      });
+    }
+  };
+};
+
+// Save product description
+export const saveDescription = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await saveProductDescription(data);
+      if (res && res.status === "OK") {
+        toast.success("Save infor product description success!");
+        dispatch({
+          type: actionTypes.SAVE_PRODUCT_DESCRIPTION_SUCCESS,
+        });
+      } else {
+        toast.error("Save infor product description error!");
+        dispatch({
+          type: actionTypes.SAVE_PRODUCT_DESCRIPTION_FAILED,
+        });
+      }
+    } catch (error) {
+      toast.error("Save infor product description error!");
+      console.log("saveProductsDescription error: ", error);
+      dispatch({
+        type: actionTypes.SAVE_PRODUCT_DESCRIPTION_FAILED,
       });
     }
   };

@@ -21,6 +21,7 @@
       "crud": "CRUD User",
       "crud-redux": "CRUD User Redux",
       "product-redux": "CRUD product Redux",
+      "description-product": "Description product",
       "shop": "Shops",
       "manage-shop": "Manage Shops",
       "catalog": "Catalogs",

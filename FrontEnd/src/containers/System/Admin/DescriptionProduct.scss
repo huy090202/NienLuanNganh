@@ -1,0 +1,30 @@
+.description-container {
+  padding: 0 100px;
+
+  .select-save {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .left {
+      width: 40%;
+
+      .description-select {
+        padding: 0 !important;
+        border: none !important;
+      }
+    }
+
+    .right {
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .save-content-description {
+        padding: 8px 10px;
+      }
+    }
+  }
+}

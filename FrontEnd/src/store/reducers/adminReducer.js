@@ -10,6 +10,7 @@ const initialState = {
   isLoadingRoleProduct: false,
   catalogs: [],
   topProducts: [],
+  allProductsDescription: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -125,6 +126,19 @@ const adminReducer = (state = initialState, action) => {
 
     case actionTypes.FETCH_TOP_PRODUCTS_FAILED:
       state.topProducts = [];
+      return {
+        ...state,
+      };
+
+    // Fetch all products description
+    case actionTypes.FETCH_ALL_PRODUCTS_DESCRIPTION_SUCCESS:
+      state.allProductsDescription = action.dataAllProductsDescription;
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_ALL_PRODUCTS_DESCRIPTION_FAILED:
+      state.allProductsDescription = [];
       return {
         ...state,
       };

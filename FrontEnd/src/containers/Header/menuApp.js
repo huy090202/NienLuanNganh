@@ -33,6 +33,10 @@ export const adminMenu = [
         name: "menu.admin.product-redux",
         link: "/system/product-redux",
       },
+      {
+        name: "menu.admin.description-product",
+        link: "/system/description-product",
+      },
     ],
   },
   {

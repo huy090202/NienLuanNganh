@@ -15,11 +15,14 @@ import "slick-carousel/slick/slick-theme.css";
 class HomePage extends Component {
   render() {
     let settings1 = {
-      dots: false,
+      className: "center",
+      centerMode: false,
       infinite: false,
+      centerPadding: "60px",
+      slidesToShow: 2,
       speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 1,
+      rows: 2,
+      slidesPerRow: 2,
     };
 
     let settings2 = {

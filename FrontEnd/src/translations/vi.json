@@ -21,6 +21,7 @@
       "crud": "CRUD User",
       "crud-redux": "CRUD User Redux",
       "product-redux": "CRUD product Redux",
+      "description-product": "Thông tin sản phẩm",
       "shop": "Cửa hàng",
       "manage-shop": "Quản lý cửa hàng",
       "catalog": "Danh mục",

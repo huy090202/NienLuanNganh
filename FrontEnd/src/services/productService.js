@@ -26,6 +26,14 @@ const getTopProductsHomeService = (limit) => {
   return axios.get(`/api/product/getTopProductHome?limit=${limit}`);
 };
 
+const getAllProductsDescription = () => {
+  return axios.get("/api/product/getAllProductsDescription");
+};
+
+const saveProductDescription = (data) => {
+  return axios.post("/api/product/saveProductDescription", data);
+};
+
 export {
   getAllProducts,
   createNewProductService,
@@ -33,4 +41,6 @@ export {
   editProductService,
   getRoleProductService,
   getTopProductsHomeService,
+  getAllProductsDescription,
+  saveProductDescription,
 };
