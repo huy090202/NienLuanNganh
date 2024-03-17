@@ -66,6 +66,12 @@ class TableAddDescription extends Component {
       contentHtml: this.state.contentHtml,
       contentMarkdown: this.state.contentMarkdown,
     });
+
+    this.setState({
+      contentHtml: "",
+      contentMarkdown: "",
+      selectedProduct: "",
+    });
   };
 
   handleChange = (selectedProduct) => {

@@ -72,6 +72,13 @@
     "catalog": "Catalogs",
     "selling-products": "Selling products",
     "suggest-today": "Suggest today",
-    "more-infor": "More infor"
+    "more-infor": "More infor",
+    "selled": "Selled",
+    "discount": "Discount",
+    "available": "Product available",
+    "add-to-cart": "Add to cart",
+    "buy-now": "Buy now",
+    "product-introduction": "Product introduction",
+    "product-reviews": "Product reviews"
   }
 }

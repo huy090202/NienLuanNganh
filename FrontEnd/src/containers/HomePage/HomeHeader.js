@@ -61,52 +61,54 @@ class HomeHeader extends Component {
             </div>
           </div>
         </div>
-        <div className="home-header-banner">
-          <div className="header-banner-up">
-            <div className="header-title1">
-              <FormattedMessage id="banner.title1" />
+        {this.props.isShowBanner === true && (
+          <div className="home-header-banner">
+            <div className="header-banner-up">
+              <div className="header-title1">
+                <FormattedMessage id="banner.title1" />
+              </div>
+              <div className="header-title2">
+                <FormattedMessage id="banner.title2" />
+              </div>
             </div>
-            <div className="header-title2">
-              <FormattedMessage id="banner.title2" />
+            <div className="header-banner-down">
+              <div className="header-options">
+                <div className="header-option-child">
+                  <div className="icon-child">
+                    <i className="fa-solid fa-truck"></i>
+                  </div>
+                  <div className="text-child">
+                    <FormattedMessage id="banner.delivery" />
+                  </div>
+                </div>
+                <div className="header-option-child">
+                  <div className="icon-child">
+                    <i className="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div className="text-child">
+                    <FormattedMessage id="banner.warranty" />
+                  </div>
+                </div>
+                <div className="header-option-child">
+                  <div className="icon-child">
+                    <i className="fa-solid fa-right-left"></i>
+                  </div>
+                  <div className="text-child">
+                    <FormattedMessage id="banner.return" />
+                  </div>
+                </div>
+                <div className="header-option-child">
+                  <div className="icon-child">
+                    <i className="fa-solid fa-boxes-stacked"></i>
+                  </div>
+                  <div className="text-child">
+                    <FormattedMessage id="banner.choice" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="header-banner-down">
-            <div className="header-options">
-              <div className="header-option-child">
-                <div className="icon-child">
-                  <i className="fa-solid fa-truck"></i>
-                </div>
-                <div className="text-child">
-                  <FormattedMessage id="banner.delivery" />
-                </div>
-              </div>
-              <div className="header-option-child">
-                <div className="icon-child">
-                  <i className="fa-solid fa-shield-halved"></i>
-                </div>
-                <div className="text-child">
-                  <FormattedMessage id="banner.warranty" />
-                </div>
-              </div>
-              <div className="header-option-child">
-                <div className="icon-child">
-                  <i className="fa-solid fa-right-left"></i>
-                </div>
-                <div className="text-child">
-                  <FormattedMessage id="banner.return" />
-                </div>
-              </div>
-              <div className="header-option-child">
-                <div className="icon-child">
-                  <i className="fa-solid fa-boxes-stacked"></i>
-                </div>
-                <div className="text-child">
-                  <FormattedMessage id="banner.choice" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
       </>
     );
   }

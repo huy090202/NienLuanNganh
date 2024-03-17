@@ -34,6 +34,10 @@ const saveProductDescription = (data) => {
   return axios.post("/api/product/saveProductDescription", data);
 };
 
+const getDetailsProduct = (id) => {
+  return axios.get(`/api/product/get-details?id=${id}`);
+};
+
 export {
   getAllProducts,
   createNewProductService,
@@ -43,4 +47,5 @@ export {
   getTopProductsHomeService,
   getAllProductsDescription,
   saveProductDescription,
+  getDetailsProduct,
 };

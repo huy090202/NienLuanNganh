@@ -35,11 +35,12 @@ class HomePage extends Component {
 
     return (
       <div>
-        <HomeHeader />
+        <HomeHeader isShowBanner={true} />
         <Catalog settings1={settings1} />
         <SellingProducts settings2={settings2} />
         <Banner />
         <Suggestion settings2={settings2} />
+        <hr />
         <HomeFooter />
       </div>
     );

@@ -5,6 +5,7 @@ import { LANGUAGES } from "../../../utils";
 
 import Slider from "react-slick";
 import * as actions from "../../../store/actions";
+import { withRouter } from "react-router";
 
 class SellingProducts extends Component {
   constructor(props) {
@@ -25,6 +26,11 @@ class SellingProducts extends Component {
       });
     }
   }
+
+  handleViewDetailProduct = (product) => {
+    console.log("View detail product: ", product);
+    this.props.history.push(`/get-details/${product._id}`);
+  };
 
   render() {
     let arrProducts = this.state.arrProducts;
@@ -52,7 +58,11 @@ class SellingProducts extends Component {
                     );
                   }
                   return (
-                    <div className="img-customize" key={index}>
+                    <div
+                      className="img-customize"
+                      key={index}
+                      onClick={() => this.handleViewDetailProduct(item)}
+                    >
                       <div className="catalog-img">
                         <div
                           className="img-son-products selling-img"
@@ -95,4 +105,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SellingProducts);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(SellingProducts)
+);
