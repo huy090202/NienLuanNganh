@@ -127,15 +127,16 @@ const deleteManyProduct = (ids) => {
 const getDetailsProduct = (id) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const product = await Product.findOne({
-        _id: id,
-      });
-      if (product === null) {
+      if (!id) {
         resolve({
           status: "ERR",
           message: "The product is not defined",
         });
       }
+
+      let product = await Product.findOne({
+        _id: id,
+      });
 
       resolve({
         status: "OK",

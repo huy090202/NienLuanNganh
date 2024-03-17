@@ -11,7 +11,7 @@ router.put(
   ProductController.updateProduct
 );
 
-router.get("/get-details/:id", ProductController.getDetailsProduct);
+router.get("/get-details", ProductController.getDetailsProduct);
 
 router.delete(
   "/delete-product",

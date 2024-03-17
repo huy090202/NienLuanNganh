@@ -59,7 +59,7 @@ const updateProduct = async (req, res) => {
 
 const getDetailsProduct = async (req, res) => {
   try {
-    const productId = req.params.id;
+    const productId = req.query.id;
     if (!productId) {
       return res.status(200).json({
         status: "ERR",
