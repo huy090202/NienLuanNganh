@@ -5,19 +5,23 @@ const Description = require("../models/descriptionModel");
 const createProduct = (newProduct) => {
   return new Promise(async (resolve, reject) => {
     const {
-      name,
+      nameVi,
+      nameEn,
       image,
       type,
       countInStock,
-      price,
-      description,
+      priceOld,
+      priceNew,
+      descriptionVi,
+      descriptionEn,
       discount,
       selled,
     } = newProduct;
 
     try {
       const checkProduct = await Product.findOne({
-        name: name,
+        nameVi: nameVi,
+        nameEn: nameEn,
       });
 
       if (checkProduct !== null) {
@@ -25,24 +29,28 @@ const createProduct = (newProduct) => {
           status: "ERR",
           message: "The name of product is already",
         });
+        return;
       }
 
-      const newProduct = await Product.create({
-        name,
+      const createdProduct = await Product.create({
+        nameVi,
+        nameEn,
         image,
         type,
         countInStock: Number(countInStock),
-        price,
-        description,
+        priceOld,
+        priceNew,
+        descriptionVi,
+        descriptionEn,
         discount,
         selled,
       });
 
-      if (newProduct) {
+      if (createdProduct) {
         resolve({
           status: "OK",
           message: "SUCCESS",
-          data: newProduct,
+          data: createdProduct,
         });
       }
     } catch (e) {
@@ -228,7 +236,8 @@ const getTopProductHome = (limit) => {
         {
           $project: {
             _id: 1,
-            name: 1,
+            nameVi: 1,
+            nameEn: 1,
             image: 1,
             type: {
               $cond: {
@@ -237,9 +246,11 @@ const getTopProductHome = (limit) => {
                 else: "$roleInfo.roleValueVi",
               },
             },
-            price: 1,
+            priceOld: 1,
+            priceNew: 1,
             countInStock: 1,
-            description: 1,
+            descriptionVi: 1,
+            descriptionEn: 1,
             discount: 1,
             selled: 1,
             createdAt: 1,
