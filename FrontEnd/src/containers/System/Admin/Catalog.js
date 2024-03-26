@@ -151,7 +151,7 @@ class Catalog extends Component {
           <FormattedMessage id="manage-catalog.manage" />
         </div>
         <div className="user-redux-body">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               <div className="col-3">
                 <label>

@@ -37,14 +37,30 @@ class TableManageUser extends Component {
       <table id="TableManage">
         <tbody>
           <tr>
-            <th>Email</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>Gender</th>
-            <th>RoleId</th>
-            <th>Actions</th>
+            <th>
+              <FormattedMessage id="manage-user.table-email" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-user.table-name" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-user.table-phone-number" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-user.table-address" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-user.table-city" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-user.table-gender" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-user.table-role" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-user.table-action" />
+            </th>
           </tr>
           {arrUsers &&
             arrUsers.length > 0 &&
@@ -83,6 +99,7 @@ class TableManageUser extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    language: state.app.language,
     // Hung ket qua cua action vao props
     listUsers: state.admin.users,
   };

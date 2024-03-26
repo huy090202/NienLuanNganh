@@ -38,24 +38,52 @@ class TableManageProduct extends Component {
       <table id="TableManage">
         <tbody>
           <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>CountInStock</th>
-            <th>Description</th>
-            <th>Discount</th>
-            <th>Selled</th>
-            <th>Type</th>
-            <th>Actions</th>
+            <th>
+              <FormattedMessage id="manage-product.table-nameVi" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-product.table-nameEn" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-product.table-priceOld" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-product.table-priceNew" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-product.table-countInStock" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-product.table-descriptionVi" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-product.table-descriptionEn" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-product.table-discount" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-product.table-selled" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-product.table-type" />
+            </th>
+            <th>
+              <FormattedMessage id="manage-product.table-action" />
+            </th>
           </tr>
           {arrProducts &&
             arrProducts.length > 0 &&
             arrProducts.map((item, index) => {
               return (
                 <tr key={index}>
-                  <td>{item.name}</td>
-                  <td>{item.price}</td>
+                  <td>{item.nameVi}</td>
+                  <td>{item.nameEn}</td>
+                  <td>{item.priceOld}</td>
+                  <td>{item.priceNew}</td>
                   <td>{item.countInStock}</td>
-                  <td>{item.description}</td>
+                  <td>{item.descriptionVi}</td>
+                  <td>{item.descriptionEn}</td>
                   <td>{item.discount}</td>
                   <td>{item.selled}</td>
                   <td>{item.type}</td>
@@ -84,6 +112,7 @@ class TableManageProduct extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    language: state.app.language,
     // Hung ket qua cua action vao props
     listProducts: state.admin.products,
   };

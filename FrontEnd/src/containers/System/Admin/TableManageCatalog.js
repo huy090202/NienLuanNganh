@@ -37,11 +37,26 @@ class TableManageCatalog extends Component {
       <table id="TableManage">
         <tbody>
           <tr>
-            <th>Role Name</th>
-            <th>Role Key</th>
-            <th>Role Value Vi</th>
-            <th>Role Value En</th>
-            <th>Actions</th>
+            <th>
+              {" "}
+              <FormattedMessage id="manage-catalog.table-roleName" />
+            </th>
+            <th>
+              {" "}
+              <FormattedMessage id="manage-catalog.table-roleKey" />
+            </th>
+            <th>
+              {" "}
+              <FormattedMessage id="manage-catalog.table-roleValueVi" />
+            </th>
+            <th>
+              {" "}
+              <FormattedMessage id="manage-catalog.table-roleValueEn" />
+            </th>
+            <th>
+              {" "}
+              <FormattedMessage id="manage-catalog.table-action" />
+            </th>
           </tr>
           {arrCatalogs &&
             arrCatalogs.length > 0 &&
@@ -77,6 +92,7 @@ class TableManageCatalog extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    language: state.app.language,
     // Hung ket qua cua action vao props
     listCatalogs: state.admin.catalogs,
   };

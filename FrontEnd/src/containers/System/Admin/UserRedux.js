@@ -232,7 +232,7 @@ class UserRedux extends Component {
           <FormattedMessage id="manage-user.manage" />
         </div>
         <div className="user-redux-body">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               <div className="col-12">
                 {isLoadingGender === true ? "Loading genders" : ""}

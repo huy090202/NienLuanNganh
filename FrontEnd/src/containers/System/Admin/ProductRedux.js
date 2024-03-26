@@ -16,11 +16,14 @@ class ProductRedux extends Component {
       previewAvatarUrl: "",
       isPreviewAvatarOpen: false,
 
-      name: "",
-      price: "",
+      nameVi: "",
+      nameEn: "",
+      priceOld: "",
+      priceNew: "",
       countInStock: "",
       rating: "",
-      description: "",
+      descriptionVi: "",
+      descriptionEn: "",
       discount: "",
       selled: "",
       type: "",
@@ -50,10 +53,13 @@ class ProductRedux extends Component {
       let arrTypeRolesProduct = this.props.typeRoleProductsRedux;
 
       this.setState({
-        name: "",
-        price: "",
+        nameVi: "",
+        nameEn: "",
+        priceOld: "",
+        priceNew: "",
         countInStock: "",
-        description: "",
+        descriptionVi: "",
+        descriptionEn: "",
         discount: "",
         ciselledty: "",
         selled: "",
@@ -97,7 +103,15 @@ class ProductRedux extends Component {
 
   checkValidateInput = () => {
     let isValid = true;
-    let arrInput = ["name", "price", "countInStock", "description"];
+    let arrInput = [
+      "nameVi",
+      "nameEn",
+      "priceOld",
+      "priceNew",
+      "countInStock",
+      "descriptionVi",
+      "descriptionEn",
+    ];
     for (let i = 0; i < arrInput.length; i++) {
       if (!this.state[arrInput[i]]) {
         isValid = false;
@@ -126,10 +140,13 @@ class ProductRedux extends Component {
     if (action === CRUD_ACTIONS.CREATE) {
       // fire redux create user
       this.props.createNewProduct({
-        name: this.state.name,
-        price: this.state.price,
+        nameVi: this.state.nameVi,
+        nameEn: this.state.nameEn,
+        priceOld: this.state.priceOld,
+        priceNew: this.state.priceNew,
         countInStock: this.state.countInStock,
-        description: this.state.description,
+        descriptionVi: this.state.descriptionVi,
+        descriptionEn: this.state.descriptionEn,
         discount: this.state.discount,
         selled: this.state.selled,
         type: this.state.type,
@@ -140,11 +157,13 @@ class ProductRedux extends Component {
       // fire redux edit user
       this.props.editAProductRedux({
         id: this.state.productEditId,
-        name: this.state.name,
-        price: this.state.price,
+        nameVi: this.state.nameVi,
+        nameEn: this.state.nameEn,
+        priceOld: this.state.priceOld,
+        priceNew: this.state.priceNew,
         countInStock: this.state.countInStock,
-        rating: this.state.rating,
-        description: this.state.description,
+        descriptionVi: this.state.descriptionVi,
+        descriptionEn: this.state.descriptionEn,
         discount: this.state.discount,
         selled: this.state.selled,
         type: this.state.type,
@@ -164,11 +183,14 @@ class ProductRedux extends Component {
     }
 
     this.setState({
-      name: product.name,
-      price: product.price,
+      nameVi: product.nameVi,
+      nameEn: product.nameEn,
+      priceOld: product.priceOld,
+      priceNew: product.priceNew,
       countInStock: product.countInStock,
       rating: product.rating,
-      description: product.description,
+      descriptionVi: product.descriptionVi,
+      descriptionEn: product.descriptionEn,
       discount: product.discount,
       selled: product.selled,
       type: product.type,
@@ -185,10 +207,13 @@ class ProductRedux extends Component {
     let isLoadingRoleProduct = this.props.isLoadingRoleProduct;
 
     let {
-      name,
-      price,
+      nameVi,
+      nameEn,
+      priceOld,
+      priceNew,
       countInStock,
-      description,
+      descriptionVi,
+      descriptionEn,
       discount,
       selled,
       type,
@@ -201,31 +226,53 @@ class ProductRedux extends Component {
           <FormattedMessage id="manage-product.manage" />
         </div>
         <div className="user-redux-body">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               <div className="col-12">
                 {isLoadingRoleProduct === true ? "Loading role product" : ""}
               </div>
               <div className="col-3">
                 <label>
-                  <FormattedMessage id="manage-product.name" />{" "}
+                  <FormattedMessage id="manage-product.nameVi" />{" "}
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  value={name}
-                  onChange={(event) => this.onChangeInput(event, "name")}
+                  value={nameVi}
+                  onChange={(event) => this.onChangeInput(event, "nameVi")}
                 />
               </div>
               <div className="col-3">
                 <label>
-                  <FormattedMessage id="manage-product.price" />{" "}
+                  <FormattedMessage id="manage-product.nameEn" />{" "}
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  value={price}
-                  onChange={(event) => this.onChangeInput(event, "price")}
+                  value={nameEn}
+                  onChange={(event) => this.onChangeInput(event, "nameEn")}
+                />
+              </div>
+              <div className="col-3">
+                <label>
+                  <FormattedMessage id="manage-product.priceOld" />{" "}
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={priceOld}
+                  onChange={(event) => this.onChangeInput(event, "priceOld")}
+                />
+              </div>
+              <div className="col-3">
+                <label>
+                  <FormattedMessage id="manage-product.priceNew" />{" "}
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={priceNew}
+                  onChange={(event) => this.onChangeInput(event, "priceNew")}
                 />
               </div>
               <div className="col-3">
@@ -243,16 +290,31 @@ class ProductRedux extends Component {
               </div>
               <div className="col-3">
                 <label>
-                  <FormattedMessage id="manage-product.description" />{" "}
+                  <FormattedMessage id="manage-product.descriptionVi" />{" "}
                 </label>
                 <input
                   type="text"
                   className="form-control"
-                  value={description}
-                  onChange={(event) => this.onChangeInput(event, "description")}
+                  value={descriptionVi}
+                  onChange={(event) =>
+                    this.onChangeInput(event, "descriptionVi")
+                  }
                 />
               </div>
-              <div className="col-4">
+              <div className="col-3">
+                <label>
+                  <FormattedMessage id="manage-product.descriptionEn" />{" "}
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={descriptionEn}
+                  onChange={(event) =>
+                    this.onChangeInput(event, "descriptionEn")
+                  }
+                />
+              </div>
+              <div className="col-3">
                 <label>
                   <FormattedMessage id="manage-product.discount" />{" "}
                 </label>
