@@ -5,11 +5,16 @@ import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../utils";
 
 import { changeLanguageApp } from "../../store/actions";
+import { withRouter } from "react-router";
 
 class HomeHeader extends Component {
   changeLanguage = (language) => {
     // fire redux event (actions)
     this.props.changeLanguageAppRedux(language);
+  };
+
+  handleGoToHomePage = () => {
+    this.props.history.push(`/home`);
   };
 
   render() {
@@ -21,7 +26,10 @@ class HomeHeader extends Component {
           <div className="home-header-content">
             <div className="left-content">
               <i className="fa-solid fa-bars"></i>
-              <div className="header-logo"></div>
+              <div
+                className="header-logo"
+                onClick={() => this.handleGoToHomePage()}
+              ></div>
             </div>
             <div className="center-content">
               <div className="header-search">
@@ -128,4 +136,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(HomeHeader)
+);

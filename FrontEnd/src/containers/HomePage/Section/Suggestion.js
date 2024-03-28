@@ -5,6 +5,7 @@ import { LANGUAGES } from "../../../utils";
 
 import Slider from "react-slick";
 import * as actions from "../../../store/actions";
+import { withRouter } from "react-router";
 
 class Suggestion extends Component {
   constructor(props) {
@@ -26,7 +27,14 @@ class Suggestion extends Component {
     }
   }
 
+  handleViewDetailProduct = (product) => {
+    this.props.history.push(`/get-details/${product._id}`, {
+      reload: true,
+    });
+  };
+
   render() {
+    let { language } = this.props;
     let arrProducts = this.state.arrProducts;
 
     return (
@@ -51,24 +59,34 @@ class Suggestion extends Component {
                       "binary"
                     );
                   }
+
+                  let nameProduct =
+                    language === LANGUAGES.VI ? item.nameVi : item.nameEn;
+
                   return (
-                    <div className="img-customize" key={index}>
+                    <div
+                      className="img-customize"
+                      key={index}
+                      onClick={() => this.handleViewDetailProduct(item)}
+                    >
                       <div className="catalog-img">
                         <div
                           className="img-son-products suggestion-img"
                           style={{ backgroundImage: `url(${imageBase64})` }}
                         >
-                          <div className="sale">
-                            {item.discount ? (
-                              <div className="sale">{item.discount}</div>
-                            ) : null}
-                          </div>
+                          {item.discount ? (
+                            <div className="sale">{item.discount}</div>
+                          ) : null}
                         </div>
                         <div className="img-title">
-                          <div className="img-name">{item.name}</div>
+                          <div className="img-name">{nameProduct}</div>
                           <div className="img-price">
-                            <span>{item.price} đ</span>
-                            <span> Đã bán: {item.selled}</span>
+                            <span>{item.priceNew} đ</span>
+                            <span>
+                              {" "}
+                              <FormattedMessage id="homepage.selled" />:{" "}
+                              {item.selled}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -97,4 +115,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Suggestion);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Suggestion)
+);

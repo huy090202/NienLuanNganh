@@ -33,6 +33,7 @@ class SellingProducts extends Component {
   };
 
   render() {
+    let { language } = this.props;
     let arrProducts = this.state.arrProducts;
 
     return (
@@ -57,6 +58,10 @@ class SellingProducts extends Component {
                       "binary"
                     );
                   }
+
+                  let nameProduct =
+                    language === LANGUAGES.VI ? item.nameVi : item.nameEn;
+
                   return (
                     <div
                       className="img-customize"
@@ -73,10 +78,14 @@ class SellingProducts extends Component {
                           ) : null}
                         </div>
                         <div className="img-title">
-                          <div className="img-name">{item.name}</div>
+                          <div className="img-name">{nameProduct}</div>
                           <div className="img-price">
-                            <span>{item.price} đ</span>
-                            <span> Đã bán: {item.selled}</span>
+                            <span>{item.priceNew} đ</span>
+                            <span>
+                              {" "}
+                              <FormattedMessage id="homepage.selled" />:{" "}
+                              {item.selled}
+                            </span>
                           </div>
                         </div>
                       </div>

@@ -34,7 +34,17 @@ class DetailProduct extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {}
+  async componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.location.state && this.props.location.state.reload) {
+      let id = this.props.match.params.id;
+      let res = await getDetailsProduct(id);
+      if (res && res.status === "OK") {
+        this.setState({
+          detailProduct: res.data,
+        });
+      }
+    }
+  }
 
   render() {
     let settings2 = {
@@ -44,17 +54,21 @@ class DetailProduct extends Component {
       slidesToShow: 4,
       slidesToScroll: 2,
     };
-
     let { detailProduct } = this.state;
-
     let imageBase64 = "";
+
     if (detailProduct.image) {
       imageBase64 = new Buffer(detailProduct.image, "base64").toString(
         "binary"
       );
     }
-
     let { language } = this.props;
+    let nameProduct =
+      language === LANGUAGES.VI ? detailProduct.nameVi : detailProduct.nameEn;
+    let descriptionProduct =
+      language === LANGUAGES.VI
+        ? detailProduct.descriptionVi
+        : detailProduct.descriptionEn;
 
     return (
       <>
@@ -70,16 +84,23 @@ class DetailProduct extends Component {
               />
             </div>
             <div className="content-right col-7">
-              <div className="product-name">{detailProduct.name}</div>
+              <div className="product-name">{nameProduct}</div>
               <div className="product-selled">
                 {detailProduct.selled} <FormattedMessage id="homepage.selled" />
               </div>
               <div className="product-price-discount">
-                <div className="product-price">{detailProduct.price} đ</div>
-                <div className="product-discount">
-                  {detailProduct.discount}{" "}
-                  <FormattedMessage id="homepage.discount" />
-                </div>
+                {detailProduct.priceOld ? (
+                  <div className="product-priceOld">
+                    {detailProduct.priceOld} đ
+                  </div>
+                ) : null}
+                <div className="product-price">{detailProduct.priceNew} đ</div>
+                {detailProduct.priceOld ? (
+                  <div className="product-discount">
+                    {detailProduct.discount}{" "}
+                    <FormattedMessage id="homepage.discount" />
+                  </div>
+                ) : null}
               </div>
 
               <div className="product-count">
@@ -109,7 +130,7 @@ class DetailProduct extends Component {
             <div className="detail-title">
               <FormattedMessage id="homepage.product-introduction" />
             </div>
-            <div className="detail-content">{detailProduct.description}</div>
+            <div className="detail-content">{descriptionProduct}</div>
           </div>
           <div className="row">
             <div className="col-12">

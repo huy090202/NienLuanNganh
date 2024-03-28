@@ -43,6 +43,12 @@
         background-color: #fafafa;
         cursor: context-menu;
 
+        .product-priceOld {
+          color: gray;
+          font-size: 25px;
+          text-decoration: line-through;
+        }
+
         .product-price {
           color: #fba243;
           font-size: 40px;

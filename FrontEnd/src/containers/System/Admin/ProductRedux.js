@@ -106,7 +106,6 @@ class ProductRedux extends Component {
     let arrInput = [
       "nameVi",
       "nameEn",
-      "priceOld",
       "priceNew",
       "countInStock",
       "descriptionVi",
