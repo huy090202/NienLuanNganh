@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema(
     nameEn: { type: String, required: true, unique: true },
     image: { type: Buffer, maxlength: 16 * 1024 * 1024, default: null },
     type: { type: String, required: true },
-    priceOld: { type: Number, required: true },
+    priceOld: { type: Number },
     priceNew: { type: Number, required: true },
     countInStock: { type: Number, required: true },
     descriptionVi: { type: String },
