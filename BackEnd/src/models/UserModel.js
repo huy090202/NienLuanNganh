@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
     avatar: { type: Buffer, maxlength: 16 * 1024 * 1024, default: null },
     gender: { type: String },
     city: { type: String },
-    roleId: { type: String },
+    roleId: { type: String, default: "R1" },
   },
   {
     timestamps: true,
