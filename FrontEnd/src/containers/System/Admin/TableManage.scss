@@ -30,3 +30,29 @@
   background-color: #04aa6d;
   color: white;
 }
+
+.btn-edit {
+  width: 50px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: orange;
+
+  &:hover {
+    color: orange !important;
+    background-color: transparent !important;
+  }
+}
+
+.btn-delete {
+  width: 50px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: rgb(235, 15, 15);
+
+  &:hover {
+    color: rgb(235, 15, 15) !important;
+    background-color: transparent !important;
+  }
+}

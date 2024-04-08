@@ -24,9 +24,53 @@
         background-size: contain;
       }
 
-      i {
-        color: grey;
-        font-size: 25px;
+      .header-setting {
+        .btn-setting {
+          padding: 5px 0;
+          border: none;
+          background-color: #fff;
+
+          i {
+            color: grey;
+            font-size: 25px;
+          }
+        }
+
+        .offcanvas {
+          width: 300px !important;
+
+          .list-group-item {
+            width: 100%;
+            color: grey;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 10px 20px;
+
+            &:hover {
+              color: #fff;
+              background: #fba243;
+            }
+
+            i {
+              width: 15%;
+            }
+
+            .modal-content {
+              color: #fba243;
+
+              .modal-header {
+                font-size: 20px;
+                text-transform: uppercase;
+              }
+
+              .modal-body {
+                color: grey;
+                font-size: 16px;
+              }
+            }
+          }
+        }
       }
     }
 

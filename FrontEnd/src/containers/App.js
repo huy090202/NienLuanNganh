@@ -15,6 +15,8 @@ import System from "../routes/System";
 import HomePage from "./HomePage/HomePage.js";
 import CustomScrollbars from "../components/CustomScrollbars";
 import DetaiProduct from "./Customer/Product/DetailProduct";
+import Seller from "../routes/Seller.js";
+import Register from "./Auth/Register.js";
 
 class App extends Component {
   handlePersistorState = () => {
@@ -49,8 +51,16 @@ class App extends Component {
                     component={userIsNotAuthenticated(Login)}
                   />
                   <Route
+                    path={path.REGISTER}
+                    component={userIsNotAuthenticated(Register)}
+                  />
+                  <Route
                     path={path.SYSTEM}
                     component={userIsAuthenticated(System)}
+                  />
+                  <Route
+                    path={"/seller/"}
+                    component={userIsAuthenticated(Seller)}
                   />
                   <Route path={path.HOMEPAGE} component={HomePage} />
                   <Route path={path.DETAILS_PRODUCT} component={DetaiProduct} />

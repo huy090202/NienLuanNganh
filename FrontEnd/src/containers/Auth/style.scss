@@ -7,7 +7,7 @@
   );
 
   .login-container {
-    width: 400px;
+    width: 500px;
     margin: auto;
     border-radius: 10px;
     background: #fff;
@@ -16,10 +16,10 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 500px;
+    height: 600px;
 
     .login-content {
-      padding: 10px;
+      padding: 20px;
 
       .text-login {
         text-align: center;
@@ -92,6 +92,11 @@
           justify-content: center;
           align-items: center;
         }
+      }
+
+      .register {
+        color: #307aff;
+        cursor: pointer;
       }
     }
   }

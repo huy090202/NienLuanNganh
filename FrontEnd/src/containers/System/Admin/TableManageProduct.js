@@ -32,7 +32,6 @@ class TableManageProduct extends Component {
   };
 
   render() {
-    console.log("this.state.productRedux: ", this.props.listProducts);
     let arrProducts = this.state.productRedux;
     return (
       <table id="TableManage">

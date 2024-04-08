@@ -4,38 +4,21 @@ export const adminMenu = [
     name: "menu.admin.manage-user",
     menus: [
       {
-        name: "menu.admin.crud",
-        link: "/system/user-manage",
-      },
-      {
         name: "menu.admin.manage-admin",
         link: "/system/admin-admin",
       },
       {
         name: "menu.admin.manage-seller",
         link: "/system/user-seller",
-        // subMenus: [
-        //   {
-        //     name: "menu.system.system-administrator.user-manage",
-        //     link: "/system/user-manage",
-        //   },
-        //   {
-        //     name: "menu.system.system-administrator.user-redux",
-        //     link: "/system/user-redux",
-        //   },
-        // ],
       },
       {
-        name: "menu.admin.crud-redux",
-        link: "/system/user-redux",
+        name: "menu.admin.user-user",
+        link: "/system/user-user",
       },
       {
-        name: "menu.admin.product-redux",
-        link: "/system/product-redux",
-      },
-      {
-        name: "menu.admin.description-product",
-        link: "/system/description-product",
+        // Quản lý sản phẩm
+        name: "menu.seller.manage-product",
+        link: "/seller/manage-product",
       },
     ],
   },
@@ -66,6 +49,20 @@ export const adminMenu = [
       {
         name: "menu.admin.manage-permission",
         link: "/system/manage-permission",
+      },
+    ],
+  },
+];
+
+export const sellerMenu = [
+  {
+    name: "menu.admin.manage-user",
+    menus: [
+      {
+        // Quản lý sản phẩm
+
+        name: "menu.seller.manage-product",
+        link: "/seller/manage-product",
       },
     ],
   },

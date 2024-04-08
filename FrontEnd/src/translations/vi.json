@@ -3,7 +3,35 @@
     "cart": "Giỏ hàng",
     "vi": "Tiếng Việt",
     "en": "Tiếng Anh",
-    "welcome": "Xin chào"
+    "welcome": "Xin chào",
+    "info": "Thông tin cá nhân",
+    "logout": "Đăng xuất",
+    "Seller-channel": "Kênh người bán",
+    "modal-body": "Bạn chưa phải là người bán, bạn có muốn đăng ký để trở thành người bán không ? Hãy gửi email cho chúng tôi để đăng ký",
+    "modal-exit": "Thoát",
+    "modal-send": "Gửi"
+  },
+  "login": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "account": "Tài khoản",
+    "password": "Mật khẩu",
+    "forgot-password": "Bạn quên mật khẩu ?",
+    "login-with": "Hoặc đăng nhập với: ",
+    "no-account": "Chưa có tài khoản ?"
+  },
+  "register": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "account": "Tài khoản",
+    "fullName": "Họ và tên",
+    "phone": "Số điện thoại",
+    "address": "Địa chỉ",
+    "city": "Thành phố",
+    "gender": "Giới tính",
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "yes-account": "Bạn đã có tài khoản ?"
   },
   "banner": {
     "title1": "Kết nối thế giới mua sắm của bạn tại Sàn Thương mại Điện tử",
@@ -18,16 +46,16 @@
       "manage-user": "Người dùng",
       "manage-seller": "Quản lý người bán",
       "manage-admin": "Quản lý quản trị viên",
-      "crud": "CRUD User",
-      "crud-redux": "CRUD User Redux",
-      "product-redux": "CRUD product Redux",
-      "description-product": "Thông tin sản phẩm",
+      "user-user": "Quản lý người dùng",
       "shop": "Cửa hàng",
       "manage-shop": "Quản lý cửa hàng",
       "catalog": "Danh mục",
       "manage-catalog": "Quản lý danh mục",
       "permission": "Phân quyền",
       "manage-permission": "Quản lý phân quyền"
+    },
+    "seller": {
+      "manage-product": "Quản lý sản phẩm"
     }
   },
   "manage-user": {

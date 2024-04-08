@@ -20,7 +20,7 @@ class UserRedux extends Component {
       email: "",
       name: "",
       password: "",
-      confimpassword: "",
+      confirmpassword: "",
       phone: "",
       address: "",
       city: "",
@@ -70,7 +70,7 @@ class UserRedux extends Component {
         email: "",
         name: "",
         password: "",
-        confimpassword: "",
+        confirmpassword: "",
         phone: "",
         address: "",
         city: "",
@@ -117,7 +117,7 @@ class UserRedux extends Component {
       "email",
       "name",
       "password",
-      "confimpassword",
+      "confirmpassword",
       "phone",
       "address",
       "city",
@@ -153,7 +153,7 @@ class UserRedux extends Component {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password,
-        confirmPassword: this.state.confimpassword,
+        confirmPassword: this.state.confirmpassword,
         phone: this.state.phone,
         address: this.state.address,
         city: this.state.city,
@@ -169,7 +169,7 @@ class UserRedux extends Component {
         name: this.state.name,
         email: this.state.email,
         password: this.state.password,
-        confirmPassword: this.state.confimpassword,
+        confirmPassword: this.state.confirmpassword,
         phone: this.state.phone,
         address: this.state.address,
         city: this.state.city,
@@ -194,7 +194,7 @@ class UserRedux extends Component {
       email: user.email,
       name: user.name,
       password: user.password, // ko hien thi password
-      confimpassword: user.confimpassword, // ko hien thi confimpassword
+      confirmpassword: user.confirmpassword, // ko hien thi confirmpassword
       phone: user.phone,
       address: user.address,
       city: user.city,
@@ -217,7 +217,7 @@ class UserRedux extends Component {
       email,
       name,
       password,
-      confimpassword,
+      confirmpassword,
       phone,
       address,
       city,
@@ -283,9 +283,9 @@ class UserRedux extends Component {
                 <input
                   type="password"
                   className="form-control"
-                  value={confimpassword}
+                  value={confirmpassword}
                   onChange={(event) =>
-                    this.onChangeInput(event, "confimpassword")
+                    this.onChangeInput(event, "confirmpassword")
                   }
                   // disabled={
                   //   this.state.action === CRUD_ACTIONS.EDIT ? true : false

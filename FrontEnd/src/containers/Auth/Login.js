@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 
 import * as actions from "../../store/actions";
+import { LANGUAGES } from "../../utils";
 
-import "./Login.scss";
+import "./style.scss";
 import { FormattedMessage } from "react-intl";
 import { handleLoginApi } from "../../services/userService";
 
@@ -67,28 +68,44 @@ class Login extends Component {
   };
 
   render() {
+    let { language } = this.props;
+
     return (
       <div className="login-background">
         <div className="login-container">
           <div className="login-content row">
-            <div className="col-12 text-login">Login</div>
+            <div className="col-12 text-login">
+              <FormattedMessage id="login.login" />
+            </div>
             <div className="col-12 form-group input-login">
-              <label>Username</label>
+              <label>
+                <FormattedMessage id="login.account" />
+              </label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter your username"
+                placeholder={
+                  language === LANGUAGES.VI
+                    ? "Nhập vào tài khoản email của bạn"
+                    : "Enter your email"
+                }
                 value={this.state.username}
                 onChange={(event) => this.handleOnChangeUsername(event)}
               />
             </div>
             <div className="col-12 form-group input-login">
-              <label>Password</label>
+              <label>
+                <FormattedMessage id="login.password" />
+              </label>
               <div className="custom-input-password">
                 <input
                   type={this.state.isShowPassword ? "text" : "password"}
                   className="form-control"
-                  placeholder="Enter your password"
+                  placeholder={
+                    language === LANGUAGES.VI
+                      ? "Nhập vào mật khẩu của bạn"
+                      : "Enter your password"
+                  }
                   value={this.state.password}
                   onChange={(event) => this.handleOnChangePassword(event)}
                 />
@@ -111,18 +128,33 @@ class Login extends Component {
                 className="button-login"
                 onClick={() => this.handleLogin()}
               >
-                Login
+                <FormattedMessage id="login.login" />
               </button>
             </div>
             <div className="col-12">
-              <span className="forgot-password">Forgot your password?</span>
+              <span className="forgot-password">
+                <FormattedMessage id="login.forgot-password" />
+              </span>
             </div>
             <div className="col-12 text-center mt-3">
-              <span className="text-other-login">Or Login with: </span>
+              <span className="text-other-login">
+                <FormattedMessage id="login.login-with" />
+              </span>
             </div>
             <div className="col-12 social-login">
               <i className="fa-brands fa-google-plus-g google"></i>
               <i className="fa-brands fa-facebook-f facebook"></i>
+            </div>
+            <div className="col-12 text-center py-5">
+              <span className="text-other-login">
+                <FormattedMessage id="login.no-account" />{" "}
+                <span
+                  className="register"
+                  onClick={() => this.props.navigate("/register")}
+                >
+                  <FormattedMessage id="login.register" />
+                </span>
+              </span>
             </div>
           </div>
         </div>

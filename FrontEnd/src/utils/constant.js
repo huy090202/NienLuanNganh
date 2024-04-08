@@ -2,6 +2,7 @@ export const path = {
   HOME: "/",
   HOMEPAGE: "/home",
   LOGIN: "/login",
+  REGISTER: "/register",
   LOG_OUT: "/logout",
   SYSTEM: "/system",
   DETAILS_PRODUCT: "/get-details/:id",
@@ -26,4 +27,10 @@ export const dateFormat = {
 export const YesNoObj = {
   YES: "Y",
   NO: "N",
+};
+
+export const USER_ROLE = {
+  CUSTOMER: "R1",
+  SELLER: "R2",
+  ADMIN: "R3",
 };

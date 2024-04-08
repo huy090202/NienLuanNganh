@@ -3,7 +3,35 @@
     "cart": "My cart",
     "vi": "Vietnamese",
     "en": "English",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "info": "Information",
+    "logout": "Logout",
+    "Seller-channel": "Seller channel",
+    "modal-body": "You are not a seller yet, do you want to register to become a seller? Please email us to register",
+    "modal-exit": "Exit",
+    "modal-send": "Send"
+  },
+  "login": {
+    "login": "Login",
+    "register": "Register",
+    "account": "Account",
+    "password": "Password",
+    "forgot-password": "Forgot your password ?",
+    "login-with": "Or login with: ",
+    "no-account": "Don't have an account ?"
+  },
+  "register": {
+    "login": "Login",
+    "register": "Register",
+    "account": "Account",
+    "fullName": "Full name",
+    "phone": "Phone number",
+    "address": "Address",
+    "city": "City",
+    "gender": "Gender",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "yes-account": "Do you have an account already ?"
   },
   "banner": {
     "title1": "Connect your shopping world at the E-commerce Platform",
@@ -18,16 +46,16 @@
       "manage-user": "Users System",
       "manage-seller": "Manage Sellers",
       "manage-admin": "Manage Admins",
-      "crud": "CRUD User",
-      "crud-redux": "CRUD User Redux",
-      "product-redux": "CRUD product Redux",
-      "description-product": "Description product",
+      "user-user": "Manage User",
       "shop": "Shops",
       "manage-shop": "Manage Shops",
       "catalog": "Catalogs",
       "manage-catalog": "Manage Catalogs",
       "permission": "Permissions",
       "manage-permission": "Manage Permissions"
+    },
+    "seller": {
+      "manage-product": "Manage Products"
     }
   },
   "manage-user": {
