@@ -157,16 +157,41 @@ const getDetailsProduct = (id) => {
   });
 };
 
-const getAllProduct = (productId) => {
+const getAllProduct = (productId, productType) => {
   return new Promise(async (resolve, reject) => {
     try {
       let products = "";
       if (productId === "All") {
         products = await Product.aggregate([
-          { $sample: { size: 20 } }, // Lấy n mẫu ngẫu nhiên từ danh sách sản phẩm
+          { $sample: { size: 9999 } }, // Lấy n mẫu ngẫu nhiên từ danh sách sản phẩm
         ]);
-      }
-      if (productId && productId !== "All") {
+
+        // products = await Product.find({});
+      } else if (productType === "C1") {
+        products = await Product.find({ type: productType });
+      } else if (productType === "C2") {
+        products = await Product.find({ type: productType });
+      } else if (productType === "C3") {
+        products = await Product.find({ type: productType });
+      } else if (productType === "C4") {
+        products = await Product.find({ type: productType });
+      } else if (productType === "C5") {
+        products = await Product.find({ type: productType });
+      } else if (productType === "C6") {
+        products = await Product.find({ type: productType });
+      } else if (productType === "C7") {
+        products = await Product.find({ type: productType });
+      } else if (productType === "C8") {
+        products = await Product.find({ type: productType });
+      } else if (productType === "C9") {
+        products = await Product.find({ type: productType });
+      } else if (productType === "C10") {
+        products = await Product.find({ type: productType });
+      } else if (productType === "C11") {
+        products = await Product.find({ type: productType });
+      } else if (productType === "C12") {
+        products = await Product.find({ type: productType });
+      } else if (productId && productId !== "All") {
         products = await Product.findOne({ _id: productId });
       }
 
@@ -269,6 +294,56 @@ const getTopProductHome = (limit) => {
   });
 };
 
+const getSuggestionProductHome = (limit) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let products = await Product.aggregate([
+        { $sample: { size: Number(limit) } },
+        // Hien thi type theo roleValueVi || roleValueEn thay vi hien thi theo roleKey
+        {
+          $lookup: {
+            from: "roles",
+            localField: "type",
+            foreignField: "roleKey",
+            as: "roleInfo",
+          },
+        },
+        { $unwind: "$roleInfo" },
+        {
+          $project: {
+            _id: 1,
+            nameVi: 1,
+            nameEn: 1,
+            image: 1,
+            type: {
+              $cond: {
+                if: { $eq: [{ $type: "$roleInfo.roleValueVi" }, "missing"] },
+                then: "$roleInfo.roleValueEn",
+                else: "$roleInfo.roleValueVi",
+              },
+            },
+            priceOld: 1,
+            priceNew: 1,
+            countInStock: 1,
+            descriptionVi: 1,
+            descriptionEn: 1,
+            discount: 1,
+            selled: 1,
+            createdAt: 1,
+          },
+        },
+      ]);
+      resolve({
+        status: "OK",
+        message: "SUCCESS",
+        data: products,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 const getAllProductsDescription = () => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -327,4 +402,5 @@ module.exports = {
   getTopProductHome,
   getAllProductsDescription,
   saveProductDescription,
+  getSuggestionProductHome,
 };

@@ -119,14 +119,15 @@ const deleteMany = async (req, res) => {
 const getAllProduct = async (req, res) => {
   try {
     const id = req.query.id;
-    if (!id) {
+    const type = req.query.type;
+    if (!id && !type) {
       return res.status(200).json({
         status: "ERR",
-        message: "The id is required",
+        message: "The id and type is required",
         products: [],
       });
     }
-    const response = await ProductService.getAllProduct(id);
+    const response = await ProductService.getAllProduct(id, type);
     return res.status(200).json(response);
   } catch (e) {
     return res.status(404).json({
@@ -162,6 +163,20 @@ const getTopProductHome = async (req, res) => {
   try {
     let limit = req.query.limit || 12;
     let response = await ProductService.getTopProductHome(+limit);
+    return res.status(200).json(response);
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      status: "ERR",
+      message: "Error from server...",
+    });
+  }
+};
+
+const getSuggestionProductHome = async (req, res) => {
+  try {
+    let limit = req.query.limit || 12;
+    let response = await ProductService.getSuggestionProductHome(+limit);
     return res.status(200).json(response);
   } catch (e) {
     console.log(e);
@@ -211,4 +226,5 @@ module.exports = {
   getTopProductHome,
   getAllProductsDescription,
   saveProductDescription,
+  getSuggestionProductHome,
 };

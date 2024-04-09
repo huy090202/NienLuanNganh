@@ -24,6 +24,11 @@ router.get("/get-all", ProductController.getAllProduct);
 router.get("/getTopProductHome", ProductController.getTopProductHome);
 
 router.get(
+  "/getSuggestionProductHome",
+  ProductController.getSuggestionProductHome
+);
+
+router.get(
   "/getAllProductsDescription",
   ProductController.getAllProductsDescription
 );
