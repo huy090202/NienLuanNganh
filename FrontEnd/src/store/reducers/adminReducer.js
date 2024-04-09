@@ -12,6 +12,7 @@ const initialState = {
   topProducts: [],
   suggestionProducts: [],
   allProductsDescription: [],
+  productWithCatalog: [],
 };
 
 const adminReducer = (state = initialState, action) => {
@@ -153,6 +154,19 @@ const adminReducer = (state = initialState, action) => {
 
     case actionTypes.FETCH_ALL_PRODUCTS_DESCRIPTION_FAILED:
       state.allProductsDescription = [];
+      return {
+        ...state,
+      };
+
+    // Fetch product with catalog
+    case actionTypes.FETCH_PRODUCT_WITH_CATALOG_SUCCESS:
+      state.productWithCatalog = action.dataProductWithCatalog;
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_PRODUCT_WITH_CATALOG_FAILED:
+      state.productWithCatalog = [];
       return {
         ...state,
       };

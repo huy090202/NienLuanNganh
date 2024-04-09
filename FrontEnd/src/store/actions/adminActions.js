@@ -17,6 +17,7 @@ import {
   getAllProductsDescription,
   saveProductDescription,
   getSuggestionProductHomeService,
+  getAllProductWithCatalog,
 } from "../../services/productService";
 
 import {
@@ -555,6 +556,30 @@ export const saveDescription = (data) => {
       console.log("saveProductsDescription error: ", error);
       dispatch({
         type: actionTypes.SAVE_PRODUCT_DESCRIPTION_FAILED,
+      });
+    }
+  };
+};
+
+// Fetch product with catalog
+export const fetchProductWithCatalog = (typeInput) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getAllProductWithCatalog(typeInput);
+      if (res && res.status === "OK") {
+        dispatch({
+          type: actionTypes.FETCH_PRODUCT_WITH_CATALOG_SUCCESS,
+          dataProductWithCatalog: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_PRODUCT_WITH_CATALOG_FAILED,
+        });
+      }
+    } catch (error) {
+      console.log("fetchProductWithCatalog error: ", error);
+      dispatch({
+        type: actionTypes.FETCH_PRODUCT_WITH_CATALOG_FAILED,
       });
     }
   };

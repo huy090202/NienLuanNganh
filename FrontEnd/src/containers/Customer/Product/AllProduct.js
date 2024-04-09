@@ -20,7 +20,7 @@ class AllProduct extends Component {
     this.props.loadAllCatalogs();
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+  async componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevProps.listCatalogs !== this.props.listCatalogs) {
       this.setState({
         arrCatalogs: this.props.listCatalogs,
@@ -28,10 +28,9 @@ class AllProduct extends Component {
     }
   }
 
-  //   handleViewProductWithCatalog = (catalogId) => {
-  //     console.log("View product with catalog: ", catalogId);
-  //     this.props.history.push(`/all-product/${catalogId}`);
-  //   };
+  handleChangeProductWithCatalog = (productType) => {
+    this.setState({ productType });
+  };
 
   render() {
     let { language } = this.props;
@@ -58,7 +57,14 @@ class AllProduct extends Component {
                   return (
                     <>
                       <ul class="list-group list-group-flush" key={index}>
-                        <li class="list-group-item">{nameCatalog}</li>
+                        <li
+                          class="list-group-item"
+                          onClick={() =>
+                            this.handleChangeProductWithCatalog(item.roleKey)
+                          }
+                        >
+                          {nameCatalog}
+                        </li>
                       </ul>
                     </>
                   );
@@ -99,7 +105,12 @@ class AllProduct extends Component {
                     </ul>
                   </div>
                 </div>
-                <ProductWithCatalog />
+                <ProductWithCatalog
+                  productType={this.state.productType}
+                  handleChangeProductWithCatalog={
+                    this.handleChangeProductWithCatalog
+                  }
+                />
               </div>
             </div>
           </div>

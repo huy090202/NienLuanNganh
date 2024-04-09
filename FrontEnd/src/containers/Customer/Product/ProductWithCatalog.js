@@ -5,33 +5,47 @@ import { LANGUAGES } from "../../../utils";
 import * as actions from "../../../store/actions";
 import "./ProductWithCatalog.scss";
 import { withRouter } from "react-router";
+import { getAllProductWithCatalog } from "../../../services/productService";
 
 class ProdcutWithCatalog extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productRedux: [],
+      productRedux: {},
     };
   }
 
-  componentDidMount() {
-    this.props.fetchProductRedux();
+  async componentDidMount() {
+    await this.props.fetchProductRedux();
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.listProducts !== this.props.listProducts) {
+  async componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.productType !== this.props.productType) {
+      let res = await getAllProductWithCatalog(this.props.productType);
+      if (res.status === "OK" && res.data) {
+        this.setState({ productRedux: res.data });
+      }
+    } else if (prevProps.listProducts !== this.props.listProducts) {
       this.setState({ productRedux: this.props.listProducts });
     }
+
+    // let res = await getAllProductWithCatalog("C12");
+    // console.log("Check: ", res);
   }
 
   handleViewDetailProduct = (product) => {
-    console.log("View detail product: ", product);
     this.props.history.push(`/get-details/${product._id}`);
   };
 
   render() {
     let { language } = this.props;
     let arrProducts = this.state.productRedux;
+
+    if (!arrProducts || arrProducts.length === 0) {
+      return (
+        <div className="text-center">Chưa có sản phẩm phù hợp cho loại này</div>
+      );
+    }
 
     return (
       <>

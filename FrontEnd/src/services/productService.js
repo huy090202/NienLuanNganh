@@ -42,6 +42,12 @@ const getDetailsProduct = (id) => {
   return axios.get(`/api/product/get-details?id=${id}`);
 };
 
+const getAllProductWithCatalog = (typeInput) => {
+  return axios.get(
+    `/api/product/get-all-product-with-catalog?type=${typeInput}`
+  );
+};
+
 export {
   getAllProducts,
   createNewProductService,
@@ -53,4 +59,5 @@ export {
   saveProductDescription,
   getDetailsProduct,
   getSuggestionProductHomeService,
+  getAllProductWithCatalog,
 };
