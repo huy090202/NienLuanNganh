@@ -10,6 +10,7 @@ const initialState = {
   isLoadingRoleProduct: false,
   catalogs: [],
   topProducts: [],
+  suggestionProducts: [],
   allProductsDescription: [],
 };
 
@@ -126,6 +127,19 @@ const adminReducer = (state = initialState, action) => {
 
     case actionTypes.FETCH_TOP_PRODUCTS_FAILED:
       state.topProducts = [];
+      return {
+        ...state,
+      };
+
+    // Fetch suggestion products
+    case actionTypes.FETCH_SUGGESTION_PRODUCTS_SUCCESS:
+      state.suggestionProducts = action.dataSuggestionpProducts;
+      return {
+        ...state,
+      };
+
+    case actionTypes.FETCH_SUGGESTION_PRODUCTS_FAILED:
+      state.suggestionProducts = [];
       return {
         ...state,
       };

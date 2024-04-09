@@ -6,6 +6,7 @@ export const path = {
   LOG_OUT: "/logout",
   SYSTEM: "/system",
   DETAILS_PRODUCT: "/get-details/:id",
+  ALL_PRODUCT: "/all-product",
 };
 
 export const LANGUAGES = {

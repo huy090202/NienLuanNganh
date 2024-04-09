@@ -1,0 +1,91 @@
+.img-customize {
+  .catalog-img {
+    display: flex;
+    padding: 5px 0;
+    margin: 0 10px;
+    border-radius: 5px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #efefef;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 0 10px 0 #efefef;
+    }
+
+    .img-son {
+      width: 100px;
+      height: 100px;
+      // background-image: url("../../assets/Catalog/ThoiTrangNam.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .img-son-products {
+      width: 250px;
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+
+      .sale {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: white;
+        font-weight: bold;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: #fba243;
+      }
+
+      &.selling-img {
+        // background-image: url("../../assets/SellingProducts/test2.png");
+      }
+
+      &.suggestion-img {
+        // background-image: url("../../assets/Suggestion/test1.png");
+      }
+    }
+
+    .img-title {
+      width: 80%;
+      padding: 10px 0;
+      font-size: 16px;
+
+      .img-name {
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .img-price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        span {
+          &:first-child {
+            color: #fba243;
+            font-size: 18px;
+            font-weight: 600;
+          }
+
+          &:last-child {
+            color: #ccc;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

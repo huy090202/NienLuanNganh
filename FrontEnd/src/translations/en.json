@@ -124,7 +124,7 @@
     "table-action": "Action"
   },
   "homepage": {
-    "catalog": "Catalogs",
+    "catalog": "Catalogs of products",
     "selling-products": "Selling products",
     "suggest-today": "Suggest today",
     "more-infor": "More infor",
@@ -134,6 +134,8 @@
     "add-to-cart": "Add to cart",
     "buy-now": "Buy now",
     "product-introduction": "Product introduction",
-    "product-reviews": "Product reviews"
+    "product-reviews": "Product reviews",
+    "Under ": "Under ",
+    "Over": "Over"
   }
 }

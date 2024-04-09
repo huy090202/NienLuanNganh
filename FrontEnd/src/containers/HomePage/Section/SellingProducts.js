@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { push } from "connected-react-router";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../../utils";
 
@@ -43,7 +44,10 @@ class SellingProducts extends Component {
             <span className="title-section">
               <FormattedMessage id="homepage.selling-products" />
             </span>
-            <button className="btn-section">
+            <button
+              className="btn-section"
+              onClick={() => this.props.navigate("/all-product")}
+            >
               <FormattedMessage id="homepage.more-infor" />
             </button>
           </div>
@@ -110,6 +114,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    navigate: (path) => dispatch(push(path)),
     loadTopProducts: () => dispatch(actions.fetchTopProducts()),
   };
 };

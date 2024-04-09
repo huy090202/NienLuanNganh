@@ -17,6 +17,7 @@ import CustomScrollbars from "../components/CustomScrollbars";
 import DetaiProduct from "./Customer/Product/DetailProduct";
 import Seller from "../routes/Seller.js";
 import Register from "./Auth/Register.js";
+import AllProduct from "./Customer/Product/AllProduct.js";
 
 class App extends Component {
   handlePersistorState = () => {
@@ -64,6 +65,7 @@ class App extends Component {
                   />
                   <Route path={path.HOMEPAGE} component={HomePage} />
                   <Route path={path.DETAILS_PRODUCT} component={DetaiProduct} />
+                  <Route path={path.ALL_PRODUCT} component={AllProduct} />
                 </Switch>
               </CustomScrollbars>
             </div>

@@ -124,7 +124,7 @@
     "table-action": "Hành động"
   },
   "homepage": {
-    "catalog": "Danh mục",
+    "catalog": "Danh mục sản phẩm",
     "selling-products": "Sản phẩm bán chạy",
     "suggest-today": "Gợi ý hôm nay",
     "more-infor": "Xem thêm",
@@ -134,6 +134,8 @@
     "add-to-cart": "Thêm vào giỏ hàng",
     "buy-now": "Mua ngay",
     "product-introduction": "Giới thiệu sản phẩm",
-    "product-reviews": "Đánh giá sản phẩm"
+    "product-reviews": "Đánh giá sản phẩm",
+    "Under ": "Dưới",
+    "Over": "Trên"
   }
 }

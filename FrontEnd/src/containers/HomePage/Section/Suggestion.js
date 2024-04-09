@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { push } from "connected-react-router";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../../utils";
 
@@ -44,7 +45,10 @@ class Suggestion extends Component {
             <span className="title-section">
               <FormattedMessage id="homepage.suggest-today" />
             </span>
-            <button className="btn-section">
+            <button
+              className="btn-section"
+              onClick={() => this.props.navigate("/all-product")}
+            >
               <FormattedMessage id="homepage.more-infor" />
             </button>
           </div>
@@ -105,13 +109,14 @@ const mapStateToProps = (state) => {
   return {
     language: state.app.language,
     isLoggedIn: state.user.isLoggedIn,
-    AllProductsRedux: state.admin.products,
+    AllProductsRedux: state.admin.suggestionProducts,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadAllProducts: () => dispatch(actions.fetchAllProductsStart()),
+    navigate: (path) => dispatch(push(path)),
+    loadAllProducts: () => dispatch(actions.fetchSuggestionProducts()),
   };
 };
 

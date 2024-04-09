@@ -16,6 +16,7 @@ import {
   getTopProductsHomeService,
   getAllProductsDescription,
   saveProductDescription,
+  getSuggestionProductHomeService,
 } from "../../services/productService";
 
 import {
@@ -480,6 +481,30 @@ export const fetchTopProducts = () => {
       console.log("fetchTopProducts error: ", error);
       dispatch({
         type: actionTypes.FETCH_TOP_PRODUCTS_FAILED,
+      });
+    }
+  };
+};
+
+// Fetch suggestion product
+export const fetchSuggestionProducts = () => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getSuggestionProductHomeService("20"); // K truyen j thi mac dinh = 12
+      if (res && res.status === "OK") {
+        dispatch({
+          type: actionTypes.FETCH_SUGGESTION_PRODUCTS_SUCCESS,
+          dataSuggestionpProducts: res.data,
+        });
+      } else {
+        dispatch({
+          type: actionTypes.FETCH_SUGGESTION_PRODUCTS_FAILED,
+        });
+      }
+    } catch (error) {
+      console.log("fetchSuggestionProducts error: ", error);
+      dispatch({
+        type: actionTypes.FETCH_SUGGESTION_PRODUCTS_FAILED,
       });
     }
   };
