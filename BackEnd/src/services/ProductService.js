@@ -157,7 +157,7 @@ const getDetailsProduct = (id) => {
   });
 };
 
-const getAllProduct = (productId, productType) => {
+const getAllProduct = (productId) => {
   return new Promise(async (resolve, reject) => {
     try {
       let products = "";
@@ -167,31 +167,9 @@ const getAllProduct = (productId, productType) => {
         ]);
 
         // products = await Product.find({});
-      } else if (productType === "C1") {
-        products = await Product.find({ type: productType });
-      } else if (productType === "C2") {
-        products = await Product.find({ type: productType });
-      } else if (productType === "C3") {
-        products = await Product.find({ type: productType });
-      } else if (productType === "C4") {
-        products = await Product.find({ type: productType });
-      } else if (productType === "C5") {
-        products = await Product.find({ type: productType });
-      } else if (productType === "C6") {
-        products = await Product.find({ type: productType });
-      } else if (productType === "C7") {
-        products = await Product.find({ type: productType });
-      } else if (productType === "C8") {
-        products = await Product.find({ type: productType });
-      } else if (productType === "C9") {
-        products = await Product.find({ type: productType });
-      } else if (productType === "C10") {
-        products = await Product.find({ type: productType });
-      } else if (productType === "C11") {
-        products = await Product.find({ type: productType });
-      } else if (productType === "C12") {
-        products = await Product.find({ type: productType });
-      } else if (productId && productId !== "All") {
+      }
+
+      if (productId && productId !== "All") {
         products = await Product.findOne({ _id: productId });
       }
 
@@ -200,6 +178,41 @@ const getAllProduct = (productId, productType) => {
         message: "Success",
         products,
       });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+const getAllProductWithCatalog = (productType) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (!productType) {
+        resolve({
+          status: "ERR",
+          message: "The type is required",
+        });
+      } else {
+        let getAllProductWithCatalog = await Product.find({
+          type: productType,
+        });
+
+        if (!getAllProductWithCatalog) {
+          getAllProductWithCatalog = [];
+
+          resolve({
+            status: "ERR",
+            message: "The type is required",
+            data: getAllProductWithCatalog,
+          });
+        }
+
+        resolve({
+          status: "OK",
+          message: "SUCCESS",
+          data: getAllProductWithCatalog,
+        });
+      }
     } catch (e) {
       reject(e);
     }
@@ -403,4 +416,5 @@ module.exports = {
   getAllProductsDescription,
   saveProductDescription,
   getSuggestionProductHome,
+  getAllProductWithCatalog,
 };

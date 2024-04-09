@@ -21,6 +21,11 @@ router.delete(
 
 router.get("/get-all", ProductController.getAllProduct);
 
+router.get(
+  "/get-all-product-with-catalog",
+  ProductController.getAllProductWithCatalog
+);
+
 router.get("/getTopProductHome", ProductController.getTopProductHome);
 
 router.get(

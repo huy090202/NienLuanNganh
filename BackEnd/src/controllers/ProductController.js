@@ -119,15 +119,33 @@ const deleteMany = async (req, res) => {
 const getAllProduct = async (req, res) => {
   try {
     const id = req.query.id;
-    const type = req.query.type;
-    if (!id && !type) {
+    if (!id) {
       return res.status(200).json({
         status: "ERR",
-        message: "The id and type is required",
+        message: "The id is required",
         products: [],
       });
     }
-    const response = await ProductService.getAllProduct(id, type);
+    const response = await ProductService.getAllProduct(id);
+    return res.status(200).json(response);
+  } catch (e) {
+    return res.status(404).json({
+      message: e,
+    });
+  }
+};
+
+const getAllProductWithCatalog = async (req, res) => {
+  try {
+    const typeProduct = req.query.type;
+    if (!typeProduct) {
+      return res.status(200).json({
+        status: "ERR",
+        message: "The type is required",
+        getAllProductWithCatalog: [],
+      });
+    }
+    const response = await ProductService.getAllProductWithCatalog(typeProduct);
     return res.status(200).json(response);
   } catch (e) {
     return res.status(404).json({
@@ -227,4 +245,5 @@ module.exports = {
   getAllProductsDescription,
   saveProductDescription,
   getSuggestionProductHome,
+  getAllProductWithCatalog,
 };
