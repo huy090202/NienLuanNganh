@@ -11,6 +11,8 @@ router.put(
   ProductController.updateProduct
 );
 
+router.patch("/update-countInStock", ProductController.updateCountInStock);
+
 router.get("/get-details", ProductController.getDetailsProduct);
 
 router.delete(
@@ -20,6 +22,8 @@ router.delete(
 );
 
 router.get("/get-all", ProductController.getAllProduct);
+
+router.get("/searchProduct", ProductController.productSearch);
 
 router.get(
   "/get-all-product-with-catalog",

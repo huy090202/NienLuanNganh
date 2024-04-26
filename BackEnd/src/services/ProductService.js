@@ -59,6 +59,34 @@ const createProduct = (newProduct) => {
   });
 };
 
+const updateCountInStock = (productId, countInStock) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const product = await Product.findByIdAndUpdate(
+        { _id: productId },
+        { countInStock: countInStock },
+        {
+          new: true,
+        }
+      );
+
+      if (product === null) {
+        resolve({
+          status: "ERR",
+          message: "The product is not defined",
+        });
+      }
+      resolve({
+        status: "OK",
+        message: "Update countInStock success",
+        product,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  })
+}
+
 const updateProduct = (id, data) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -171,6 +199,39 @@ const getAllProduct = (productId) => {
 
       if (productId && productId !== "All") {
         products = await Product.findOne({ _id: productId });
+      }
+
+      resolve({
+        status: "OK",
+        message: "Success",
+        products,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+const productSearch = (productId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let products = "";
+      if (productId === "All") {
+        products = await Product.find({});
+
+        // products = await Product.find({});
+      }
+
+      if (productId && productId !== "All") {
+        const exactProduct = await Product.findOne({ nameVi: productId });
+
+        // Nếu tìm thấy sản phẩm trùng khớp, trả về mảng chỉ chứa sản phẩm đó
+        if (exactProduct) {
+          products = [exactProduct];
+        } else {
+          // Nếu không tìm thấy sản phẩm trùng khớp, thực hiện tìm kiếm dựa trên văn bản trên trường 'Name'
+          products = await Product.find({ $text: { $search: productId } });
+        }
       }
 
       resolve({
@@ -417,4 +478,6 @@ module.exports = {
   saveProductDescription,
   getSuggestionProductHome,
   getAllProductWithCatalog,
+  updateCountInStock,
+  productSearch
 };

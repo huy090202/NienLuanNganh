@@ -1,39 +1,51 @@
 const mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema(
   {
-    orderItems: [
-      {
-        name: { type: String, required: true },
-        amount: { type: Number, required: true },
-        image: { type: String, required: true },
-        price: { type: Number, required: true },
-        discount: { type: Number },
-        product: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Product",
-          required: true,
-        },
-      },
-    ],
-    shippingAddress: {
-      fullName: { type: String, required: true },
-      address: { type: String, required: true },
-      city: { type: String, required: true },
-      phone: { type: Number, required: true },
+    statusOrder: {
+      type: String,
+      enum: ["-1", "0", "1"],
+      default: "0"
     },
-    paymentMethod: { type: String, required: true },
-    itemsPrice: { type: Number, required: true },
-    shippingPrice: { type: Number, required: true },
-    totalPrice: { type: Number, required: true },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    isPaid: { type: Boolean, default: false },
-    paidAt: { type: Date },
-    isDelivered: { type: Boolean, default: false },
-    deliveredAt: { type: Date },
+
+    paymentMethod: {
+      type: String,
+      default: "Thanh toán khi nhận hàng",
+      enum: ["Thanh toán khi nhận hàng", "Thanh toán qua thẻ"]
+    },
+
+    dayCreated: {
+      type: Date,
+    },
+
+    shippingPrice: {
+      type: Number,
+      default: 20000
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true
+    },
+
+    productId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+      required: true
+    },
   },
   {
     timestamps: true,
   }
 );
+
+orderSchema.pre('save', function (next) {
+  // Kiểm tra nếu dayCreated chưa được thiết lập (null hoặc undefined)
+  if (!this.dayCreated) {
+    // Thiết lập dayCreated thành ngày hiện tại
+    this.dayCreated = new Date();
+  }
+  next();
+});
+
 const Order = mongoose.model("Order", orderSchema);
 module.exports = Order;

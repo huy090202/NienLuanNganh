@@ -161,6 +161,46 @@ const getAllUser = async (req, res) => {
   }
 };
 
+const getAllStaffs = async (req, res) => {
+  try {
+    const id = req.query.id; // All or id
+    if (!id) {
+      return res.status(200).json({
+        status: "ERR",
+        message: "The id is required",
+        staffs: [],
+      });
+    }
+    const staffs = await UserService.getAllStaffs(id);
+    return res.status(200).json(staffs);
+  } catch (e) {
+    console.error(e);
+    return res.status(404).json({
+      message: e,
+    });
+  }
+}
+
+const getAllAdmins = async (req, res) => {
+  try {
+    const id = req.query.id; // All or id
+    if (!id) {
+      return res.status(200).json({
+        status: "ERR",
+        message: "The id is required",
+        admins: [],
+      });
+    }
+    const admins = await UserService.getAllAdmins(id);
+    return res.status(200).json(admins);
+  } catch (e) {
+    console.error(e);
+    return res.status(404).json({
+      message: e,
+    });
+  }
+}
+
 const getDetailsUser = async (req, res) => {
   try {
     const userId = req.params.id;
@@ -234,4 +274,6 @@ module.exports = {
   logoutUser,
   deleteMany,
   roleUser,
+  getAllStaffs,
+  getAllAdmins
 };

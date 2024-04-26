@@ -192,7 +192,7 @@ const getAllUser = (userId) => {
   return new Promise(async (resolve, reject) => {
     try {
       let users = "";
-      if (userId == "All") {
+      if (userId === "All") {
         // Neu password: 0 thi khong tra ve password
         // Neu password: 1 thi tra ve password
         users = await User.find({}, { password: 0 }).sort({
@@ -214,6 +214,58 @@ const getAllUser = (userId) => {
     }
   });
 };
+
+const getAllStaffs = (staffId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let staffs = "";
+      if (staffId === "All") {
+        staffs = await User.find({ roleId: "R2" }, { password: 0 }).sort({
+          createdAt: -1,
+          updatedAt: -1,
+        });
+      }
+
+      if (staffId && staffId !== "All") {
+        staffs = await User.findOne({ _id: staffId }, { password: 0 });
+      }
+
+      resolve({
+        status: "OK",
+        message: "Success",
+        staffs,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+}
+
+const getAllAdmins = (adminId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let admins = "";
+      if (adminId === "All") {
+        admins = await User.find({ roleId: "R3" }, { password: 0 }).sort({
+          createdAt: -1,
+          updatedAt: -1,
+        });
+      }
+
+      if (adminId && adminId !== "All") {
+        admins = await User.findOne({ _id: adminId }, { password: 0 });
+      }
+
+      resolve({
+        status: "OK",
+        message: "Success",
+        admins,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+}
 
 const getDetailsUser = (id) => {
   return new Promise(async (resolve, reject) => {
@@ -268,4 +320,6 @@ module.exports = {
   getDetailsUser,
   deleteManyUser,
   roleUser,
+  getAllStaffs,
+  getAllAdmins
 };
