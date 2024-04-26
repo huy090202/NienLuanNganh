@@ -41,8 +41,8 @@ class AllProduct extends Component {
         <div className="container my-5">
           <div className="row">
             <div className="col-3 allProduct-content-left">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item active">
+              <ul className="list-group list-group-flush parent">
+                <li className="list-group-item active">
                   <FormattedMessage id="homepage.catalog" />
                 </li>
               </ul>
@@ -55,27 +55,25 @@ class AllProduct extends Component {
                       : item.roleValueEn;
 
                   return (
-                    <>
-                      <ul class="list-group list-group-flush" key={index}>
-                        <li
-                          class="list-group-item"
-                          onClick={() =>
-                            this.handleChangeProductWithCatalog(item.roleKey)
-                          }
-                        >
-                          {nameCatalog}
-                        </li>
-                      </ul>
-                    </>
+                    <ul className="list-group list-group-flush" key={index}>
+                      <li
+                        className="list-group-item"
+                        onClick={() =>
+                          this.handleChangeProductWithCatalog(item.roleKey)
+                        }
+                      >
+                        {nameCatalog}
+                      </li>
+                    </ul>
                   );
                 })}
             </div>
             <div className="col-9 allProduct-content-right">
               <div className="row">
                 <div className="mb-1 text-right">
-                  <div class="dropdown">
+                  <div className="dropdown">
                     <button
-                      class="btn btn-secondary dropdown-toggle"
+                      className="btn btn-secondary dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton1"
                       data-bs-toggle="dropdown"
@@ -84,21 +82,21 @@ class AllProduct extends Component {
                       <i className="fa-solid fa-filter-circle-dollar"></i>
                     </button>
                     <ul
-                      class="dropdown-menu"
+                      className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton1"
                     >
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <a className="dropdown-item" href="#">
                           <FormattedMessage id="homepage.Under " /> 100.000đ
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <a className="dropdown-item" href="#">
                           100.000đ - 500.000đ
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
+                        <a className="dropdown-item" href="#">
                           <FormattedMessage id="homepage.Over" /> 500.000đ
                         </a>
                       </li>

@@ -43,7 +43,9 @@ class ProdcutWithCatalog extends Component {
 
     if (!arrProducts || arrProducts.length === 0) {
       return (
-        <div className="text-center">Chưa có sản phẩm phù hợp cho loại này</div>
+        <div className="text-center fs-2 not-found-product">
+          <FormattedMessage id="homepage.not-found-product" />
+        </div>
       );
     }
 

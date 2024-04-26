@@ -9,7 +9,10 @@
     "Seller-channel": "Seller channel",
     "modal-body": "You are not a seller yet, do you want to register to become a seller? Please email us to register",
     "modal-exit": "Exit",
-    "modal-send": "Send"
+    "modal-send": "Send",
+    "modal-save": "Save changes",
+    "search": "Search Results",
+    "addToCart": "Products in the shopping cart"
   },
   "login": {
     "login": "Login",
@@ -43,7 +46,7 @@
   },
   "menu": {
     "admin": {
-      "manage-user": "Users System",
+      "manage-user": "Settings",
       "manage-seller": "Manage Sellers",
       "manage-admin": "Manage Admins",
       "user-user": "Manage User",
@@ -52,7 +55,8 @@
       "catalog": "Catalogs",
       "manage-catalog": "Manage Catalogs",
       "permission": "Permissions",
-      "manage-permission": "Manage Permissions"
+      "manage-permission": "Manage Permissions",
+      "manage-order": "Manage Orders"
     },
     "seller": {
       "manage-product": "Manage Products"
@@ -60,6 +64,8 @@
   },
   "manage-user": {
     "manage": "Manage user",
+    "manage-staff": "Manage seller",
+    "manage-admin": "Manage admin",
     "email": "Email",
     "name": "Name",
     "password": "Password",
@@ -71,6 +77,8 @@
     "role": "Role",
     "avatar": "Avatar",
     "save": "Save user",
+    "save-staff": "Save seller",
+    "save-admin": "Save admin",
     "edit": "Save changes",
     "table-email": "Email",
     "table-name": "Name",
@@ -79,10 +87,18 @@
     "table-city": "City",
     "table-gender": "Gender",
     "table-role": "Role",
-    "table-action": "Action"
+    "table-action": "Action",
+    "order-status": "Order status",
+    "order-payment": "Payment status",
+    "order-shippingPrice": "Shipping price",
+    "order-dayCreate": "Day create",
+    "order-user": "User",
+    "order-product": "Product",
+    "order-list": "Order list"
   },
   "manage-product": {
     "manage": "Manage product",
+    "name": "Name product",
     "nameVi": "Name Vietnamese",
     "nameEn": "Name English",
     "priceOld": "Price old",
@@ -106,7 +122,9 @@
     "table-discount": "Discount",
     "table-selled": "Selled",
     "table-type": "Type",
-    "table-action": "Action"
+    "table-action": "Action",
+    "quantity": "Quantity",
+    "pay": "Pay"
   },
   "manage-catalog": {
     "manage": "Manage catalogs",
@@ -136,6 +154,7 @@
     "product-introduction": "Product introduction",
     "product-reviews": "Product reviews",
     "Under ": "Under ",
-    "Over": "Over"
+    "Over": "Over",
+    "not-found-product": "There are no suitable products for this category"
   }
 }

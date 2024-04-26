@@ -18,6 +18,8 @@ import DetaiProduct from "./Customer/Product/DetailProduct";
 import Seller from "../routes/Seller.js";
 import Register from "./Auth/Register.js";
 import AllProduct from "./Customer/Product/AllProduct.js";
+import ProductCart from "./Customer/Product/ProductCart.js";
+import SearchProduct from "./Customer/Product/SearchProduct.js";
 
 class App extends Component {
   handlePersistorState = () => {
@@ -66,6 +68,8 @@ class App extends Component {
                   <Route path={path.HOMEPAGE} component={HomePage} />
                   <Route path={path.DETAILS_PRODUCT} component={DetaiProduct} />
                   <Route path={path.ALL_PRODUCT} component={AllProduct} />
+                  <Route path={path.PRODUCT_CART} component={ProductCart} />
+                  <Route path={path.SEARCH} component={SearchProduct} />
                 </Switch>
               </CustomScrollbars>
             </div>

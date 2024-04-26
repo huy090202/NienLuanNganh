@@ -1,0 +1,40 @@
+.product-cart {
+    height: 75vh;
+    max-height: 100vh;
+}
+
+.product-cart-image {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.product-input {
+    height: 50px;
+    background-color: #fafafa;
+
+    .minus {
+        height: 100%;
+        width: 40px;
+        border: 1px solid #ccc;
+    }
+
+    .count-input {
+        width: 100px;
+        height: 100%;
+        text-align: center;
+        border: 1px solid #ccc;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .plus {
+        height: 100%;
+        width: 40px;
+        border: 1px solid #ccc;
+    }
+}

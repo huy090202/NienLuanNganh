@@ -8,6 +8,7 @@ import { adminMenu, sellerMenu } from "./menuApp";
 import "./Header.scss";
 import { LANGUAGES, USER_ROLE } from "../../utils";
 import _ from "lodash";
+import { withRouter } from "react-router";
 
 class Header extends Component {
   constructor(props) {
@@ -40,6 +41,10 @@ class Header extends Component {
     });
   }
 
+  handleGoHome = () => {
+    this.props.history.push("/home");
+  }
+
   render() {
     const { processLogout, language, userInfo } = this.props;
 
@@ -48,6 +53,10 @@ class Header extends Component {
         {/* thanh navigator */}
         <div className="header-tabs-container">
           <Navigator menus={this.state.menuApp} />
+        </div>
+
+        <div className="header-goHome" onClick={() => this.handleGoHome()}>
+          <i className="fa-solid fa-house"></i>
         </div>
 
         <div className="languages">
@@ -101,4 +110,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

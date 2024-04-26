@@ -29,6 +29,14 @@ const getRoleService = (inputRoleName) => {
   return axios.get(`/api/user/role?roleName=${inputRoleName}`);
 };
 
+const getAllStaffs = (data) => {
+  return axios.get(`/api/user/get-all-staff?id=${data}`);
+}
+
+const getAllAdmins = (data) => {
+  return axios.get(`/api/user/get-all-admin?id=${data}`);
+}
+
 export {
   handleLoginApi,
   getAllUsers,
@@ -36,4 +44,6 @@ export {
   deleteUserService,
   editUserService,
   getRoleService,
+  getAllStaffs,
+  getAllAdmins
 };

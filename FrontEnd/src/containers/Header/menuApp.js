@@ -20,6 +20,11 @@ export const adminMenu = [
         name: "menu.seller.manage-product",
         link: "/seller/manage-product",
       },
+      {
+        // Quản lý đơn hàng
+        name: "menu.admin.manage-order",
+        link: "/system/manage-order",
+      },
     ],
   },
   {

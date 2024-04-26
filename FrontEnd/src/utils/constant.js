@@ -7,6 +7,8 @@ export const path = {
   SYSTEM: "/system",
   DETAILS_PRODUCT: "/get-details/:id",
   ALL_PRODUCT: "/all-product",
+  PRODUCT_CART: "/product-cart/:id",
+  SEARCH: "/search",
 };
 
 export const LANGUAGES = {

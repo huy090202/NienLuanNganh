@@ -9,7 +9,10 @@
     "Seller-channel": "Kênh người bán",
     "modal-body": "Bạn chưa phải là người bán, bạn có muốn đăng ký để trở thành người bán không ? Hãy gửi email cho chúng tôi để đăng ký",
     "modal-exit": "Thoát",
-    "modal-send": "Gửi"
+    "modal-send": "Gửi",
+    "modal-save": "Lưu thay đổi",
+    "search": "Kết quả tìm kiếm",
+    "addToCart": "Các sản phẩm trong giỏ hàng"
   },
   "login": {
     "login": "Đăng nhập",
@@ -43,7 +46,7 @@
   },
   "menu": {
     "admin": {
-      "manage-user": "Người dùng",
+      "manage-user": "Cài đặt",
       "manage-seller": "Quản lý người bán",
       "manage-admin": "Quản lý quản trị viên",
       "user-user": "Quản lý người dùng",
@@ -52,7 +55,8 @@
       "catalog": "Danh mục",
       "manage-catalog": "Quản lý danh mục",
       "permission": "Phân quyền",
-      "manage-permission": "Quản lý phân quyền"
+      "manage-permission": "Quản lý phân quyền",
+      "manage-order": "Quản lý đơn hàng"
     },
     "seller": {
       "manage-product": "Quản lý sản phẩm"
@@ -60,6 +64,8 @@
   },
   "manage-user": {
     "manage": "Quản lý người dùng",
+    "manage-staff": "Quản lý người bán",
+    "manage-admin": "Quản lý quản trị viên",
     "email": "Email",
     "name": "Tên",
     "password": "Mật khẩu",
@@ -71,6 +77,8 @@
     "role": "Vai trò",
     "avatar": "Ảnh đại diện",
     "save": "Lưu nguời dùng",
+    "save-staff": "Lưu người bán",
+    "save-admin": "Lưu quản trị viên",
     "edit": "Lưu thay đổi",
     "table-email": "Email",
     "table-name": "Tên",
@@ -79,10 +87,18 @@
     "table-city": "Thành phố",
     "table-gender": "Giới tính",
     "table-role": "Vai trò",
-    "table-action": "Hành động"
+    "table-action": "Hành động",
+    "order-status": "Trạng thái đơn hàng",
+    "order-payment": "Phương thức thanh toán",
+    "order-shippingPrice": "Phí vận chuyển",
+    "order-dayCreate": "Ngày tạo",
+    "order-user": "Người mua",
+    "order-product": "Sản phẩm",
+    "order-list": "Danh sách đơn hàng"
   },
   "manage-product": {
     "manage": "Quản lý sản phẩm",
+    "name": "Tên sản phẩm",
     "nameVi": "Tên sản phẩm tiếng Việt",
     "nameEn": "Tên sản phẩm tiếng Anh",
     "priceOld": "Giá sản phẩm cũ",
@@ -106,7 +122,9 @@
     "table-discount": "Giảm giá",
     "table-selled": "Đã bán",
     "table-type": "Loại sản phẩm",
-    "table-action": "Hành động"
+    "table-action": "Hành động",
+    "quantity": "Số lượng",
+    "pay": "Thanh toán"
   },
   "manage-catalog": {
     "manage": "Quản lý danh mục",
@@ -136,6 +154,7 @@
     "product-introduction": "Giới thiệu sản phẩm",
     "product-reviews": "Đánh giá sản phẩm",
     "Under ": "Dưới",
-    "Over": "Trên"
+    "Over": "Trên",
+    "not-found-product": "Chưa có sản phẩm phù hợp cho loại này"
   }
 }

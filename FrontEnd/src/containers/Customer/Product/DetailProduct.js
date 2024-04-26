@@ -4,10 +4,11 @@ import HomeHeader from "../../HomePage/HomeHeader";
 import "./DetailProduct.scss";
 import Suggestion from "../../HomePage/Section/Suggestion";
 import HomeFooter from "../../HomePage/HomeFooter";
-import { getDetailsProduct } from "../../../services/productService";
+import { getDetailsProduct, createOrder, updateCountInStock } from "../../../services/productService";
 
 import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../../utils";
+import { withRouter } from "react-router";
 
 class DetailProduct extends Component {
   constructor(props) {
@@ -46,7 +47,36 @@ class DetailProduct extends Component {
     }
   }
 
+  handleAddProductToCart = (product) => {
+    this.props.history.push(`/product-cart/${product._id}`);
+  }
+
+  handlePay = async (product, user) => {
+    const res = await createOrder({
+      userId: user._id,
+      productId: product._id,
+    });
+    if (res.status === "OK") {
+      alert("Thanh toán thành công");
+      const updatedCountInStock = await updateCountInStock({
+        id: product._id,
+        countInStock: product.countInStock - 1,
+      });
+
+      if (updatedCountInStock.status === "OK") {
+        console.log("Update countInStock successfully");
+      } else {
+        console.log("Update countInStock failed");
+      }
+    } else {
+      alert("Thanh toán thất bại");
+    }
+  }
+
   render() {
+
+    let userInfo = this.props.userInfo;
+
     let settings2 = {
       dots: false,
       infinite: false,
@@ -55,6 +85,8 @@ class DetailProduct extends Component {
       slidesToScroll: 2,
     };
     let { detailProduct } = this.state;
+
+    console.log("DetailProduct:", detailProduct.countInStock)
     let imageBase64 = "";
 
     if (detailProduct.image) {
@@ -115,11 +147,11 @@ class DetailProduct extends Component {
                 </div>
               </div>
               <div className="product-buy">
-                <button className="add-to-cart">
+                <button className="add-to-cart" onClick={() => this.handleAddProductToCart(detailProduct)}>
                   <i className="fas fa-cart-plus"></i>
                   <FormattedMessage id="homepage.add-to-cart" />
                 </button>
-                <button className="buy">
+                <button className="buy" onClick={() => this.handlePay(detailProduct, userInfo)}>
                   <FormattedMessage id="homepage.buy-now" />
                 </button>
               </div>
@@ -154,6 +186,7 @@ class DetailProduct extends Component {
 const mapStateToProps = (state) => {
   return {
     language: state.app.language,
+    userInfo: state.user.userInfo,
   };
 };
 
@@ -161,4 +194,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DetailProduct);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DetailProduct));

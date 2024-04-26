@@ -39,6 +39,38 @@
         .offcanvas {
           width: 300px !important;
 
+          .offcanvas-header {
+            color: #fff;
+            background: #fba243;
+            height: 102px;
+
+            .offcanvas-title {
+              height: 100px;
+
+              .userAvatar {
+                width: 70px;
+                height: 70px;
+                background: #dedede;
+                border: 1px solid #fff;
+                margin: 0 auto;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+
+                img {
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                }
+              }
+
+              .userName {
+                flex: 1;
+                color: #fff;
+              }
+            }
+          }
+
           .list-group-item {
             width: 100%;
             color: grey;
@@ -48,27 +80,8 @@
             padding: 10px 20px;
             transition: all 0.3s;
 
-            &:hover {
-              color: #fff;
-              background: #fba243;
-            }
-
             i {
               width: 15%;
-            }
-
-            .modal-content {
-              color: #fba243;
-
-              .modal-header {
-                font-size: 20px;
-                text-transform: uppercase;
-              }
-
-              .modal-body {
-                color: grey;
-                font-size: 16px;
-              }
             }
           }
         }
@@ -244,6 +257,23 @@
           cursor: context-menu;
         }
       }
+    }
+  }
+}
+
+// Modal
+.modal-dialog {
+  .modal-content {
+    color: #fba243;
+
+    .modal-header {
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    .modal-body {
+      color: grey;
+      font-size: 16px;
     }
   }
 }

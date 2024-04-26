@@ -48,6 +48,22 @@ const getAllProductWithCatalog = (typeInput) => {
   );
 };
 
+const createOrder = (data) => {
+  return axios.post("/api/order/create", data);
+};
+
+const updateCountInStock = (data) => {
+  return axios.patch("/api/product/update-countInStock", data);
+}
+
+const productSearch = (data) => {
+  return axios.get(`/api/product/searchProduct?id=${data}`);
+}
+
+const getAllOrder = () => {
+  return axios.get("/api/order/get-all-order");
+}
+
 export {
   getAllProducts,
   createNewProductService,
@@ -60,4 +76,8 @@ export {
   getDetailsProduct,
   getSuggestionProductHomeService,
   getAllProductWithCatalog,
+  createOrder,
+  updateCountInStock,
+  productSearch,
+  getAllOrder
 };
